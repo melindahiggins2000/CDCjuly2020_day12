@@ -1,0 +1,117 @@
+---
+title: "Day 1 - File 1 - add printr"
+author: "Melinda Higgins"
+date: "7/28/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(printr)
+```
+
+## Abalone Dataset
+
+For this exercise we will be working with the `abalone` dataset from the University of California - Irvine Machine Learning Repository. This dataset can be downloaded from [https://archive.ics.uci.edu/ml/datasets/abalone](https://archive.ics.uci.edu/ml/datasets/abalone).
+
+The dataset has 9 measurements on 4177 abalones of different ages and sexes. The data comes from this study: Warwick J. Nash, Tracy L. Sellers, Simon R. Talbot, Andrew J. Cawthorn and Wes B. Ford (1994) "The Population Biology of Abalone (_Haliotis_ species) in Tasmania. I. Blacklip Abalone (_H. rubra_) from the North Coast and Islands of Bass Strait", Sea Fisheries Division, Technical Report No. 48 (ISSN 1034-3288).
+
+The purpose of the study was to predicting the age of abalone from physical measurements. The age of abalone is determined by cutting the shell through the cone, staining it, and counting the number of rings through a microscope -- a boring and time-consuming task. This process also kills the abalones! Other measurements, which are easier to obtain, can be used to predict the age. Further information, such as weather patterns and location (hence food availability) may be required to solve the problem.
+
+## Load the abalone dataset
+
+For this R project, the abalone data have already been downloaded as a CSV file. We will load this data file from the R project directory into "memory" for use in this Rmarkdown file with our R analysis codes.
+
+```{r}
+# load the abalone dataset
+library(readr)
+abalone <- readr::read_csv("abalone.csv")
+```
+
+## Display the top 6 rows of the dataset
+
+Use the base R function `head()` to show the top 6 rows of the dataset. To learn more about the `head()` function, type `head` in the help window or in the console type `help(head)` or `?head` to learn more.
+
+```{r}
+head(abalone)
+```
+
+## Get a glimpse of the dataset
+
+There is a handy function `glimpse()` from the **tibble** package that gives us good summary information about our dataset.
+
+```{r}
+library(tibble)
+glimpse(abalone)
+```
+
+## Other ways to get descriptive information on the dataset
+
+Other useful function are the `str()` or structure function and the `dim()` or dimension function.
+
+```{r}
+str(abalone)
+dim(abalone)
+```
+
+## Arrange (sort) data by height, view top 6 rows
+
+For most of this workshop, I will use the "tidyverse" suite of packages. One of the key packages we will use is the **dplyr** package. This package provides for the pipe `%>%` function which is a really great way to program.
+
+The pipe `%>%` function allows you to write code in a logical step by step approach.
+
+For example, the code below says to start with the abalone dataset "and then" or "next" arrange the data by the variable `height` from the abalone dataset "and then" get the top 6 rows of the dataset using the `head()` function.
+
+```{r}
+library(dplyr)
+abalone %>%
+  arrange(height) %>%
+  head()
+```
+
+The alternative way to do this without the **dplyr** pipe `%>%` function is to use nested function calls.
+
+This is harder to read and much easier to make mistakes if you leave off a `()` or get the nested options mixed up.
+
+```{r}
+head(arrange(abalone, height))
+```
+
+Let's try some more...
+
+## Arrange (sort) data by rings in descending order, view top 10 rows
+
+```{r}
+abalone %>%
+  arrange(desc(rings)) %>%
+  head(10)
+```
+
+## Arrange by rings, view bottom 5 rows
+
+```{r}
+abalone %>%
+  arrange(rings) %>%
+  tail(5)
+```
+
+## Exercise for you
+
+Using the example above, write the R code to sort the abalone dataset in ascending order by `wholeWeight` and view the bottom 8 rows - list the 8 heaviest abalones.
+
+What sex are most of these?
+
+```{r}
+# insert your code here
+
+
+```
+
+## Let's make the document a little nicer
+
+There is a handy package called **printr** that makes every attempt to make a knitted document look better.
+
+Let's go back to the top of the file and add the **printr** package using the `library()` command.
