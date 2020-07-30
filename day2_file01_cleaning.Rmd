@@ -66,11 +66,27 @@ abalone %>%
 
 Using this information, create a new modified dataset `abaloneMod` that sets height equal to 0 to missing.
 
+Note: protected words in R
+
+TRUE
+FALSE
+NA
+NaN
+
 ```{r}
 # create abaloneMod
 # set height == 0 to NA
 abaloneMod <- abalone %>%
-  mutate(height = ifelse(height==0, NA, height))
+  mutate(height = ifelse(height == 0, 
+                         yes = NA,     # NA is a protected word
+                         no = height))
+
+abaloneMod %>%
+  filter(height == NA) %>%
+  head()
+
+abaloneMod %>%
+  filter(is.na(height))
 ```
 
 Let's check the stats for `height` with the summary function before and after the missing data was added for implausible values.
@@ -106,16 +122,19 @@ This code runs, but the result is `NA`. Since there are missing values `NA`s for
 
 Let's add some options on how to handle the missing data. For the `mean()` function, we can add the `na.rm=TRUE` option to tell the `mean()` function to first remove the missing `NA`s and then run then calculate the mean.
 
+"na's" and remove them = na.rm()
+
+
 ```{r}
 # add na.rm=TRUE option
 abaloneMod %>%
   pull(height) %>%
-  mean(na.rm=TRUE)
+  mean(na.rm=TRUE) # remove NAs first, then compute the mean
 ```
 
 Also try with `summarise()` function from **dplyr** to add additional information.
 
-For this exmaple below we've added 3 summary statistics.
+For this example below we've added 3 summary statistics.
 
 * `n = n()` which is from the **dplyr** package to give the total count of rows of data, even with missing data
 * we added `nmiss = sum(is.na(height))` which 1st runs the `is.na()` function which returns 0 for not missing and 1 for missing and then the `sum()` function counts up the number of missing values for the variable `height`

@@ -71,6 +71,8 @@ lm1 <- lm(age ~ length, data = abaloneMod_complete)
 lm1
 slm1 <- summary(lm1)
 slm1
+
+slm1[["coefficients"]]
 ```
 
 Model 2 age by wholeWeight
@@ -93,9 +95,9 @@ slm3
 Compare the full model `lm3` to the reduced models `lm1` or `lm2`.
 
 ```{r}
-anova(lm1, lm3)
+anova(lm1, lm3) # model with length to full model with both
 
-anova(lm2, lm3)
+anova(lm2, lm3) # model with WW to full model with both
 ```
 
 ## Make tables of the coefficients of each model

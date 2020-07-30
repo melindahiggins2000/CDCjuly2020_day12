@@ -399,10 +399,30 @@ summary {
 ## 1  1258
 ## 2  3997</code></pre>
 <p>Using this information, create a new modified dataset <code>abaloneMod</code> that sets height equal to 0 to missing.</p>
+<p>Note: protected words in R</p>
+<p>TRUE FALSE NA NaN</p>
 <pre class="r"><code># create abaloneMod
 # set height == 0 to NA
 abaloneMod &lt;- abalone %&gt;%
-  mutate(height = ifelse(height==0, NA, height))</code></pre>
+  mutate(height = ifelse(height == 0, 
+                         yes = NA,     # NA is a protected word
+                         no = height))
+
+abaloneMod %&gt;%
+  filter(height == NA) %&gt;%
+  head()</code></pre>
+<pre><code>## # A tibble: 0 x 11
+## # … with 11 variables: X1 &lt;dbl&gt;, sex &lt;chr&gt;, length &lt;dbl&gt;, diameter &lt;dbl&gt;,
+## #   height &lt;dbl&gt;, wholeWeight &lt;dbl&gt;, shuckedWeight &lt;dbl&gt;, visceraWeight &lt;dbl&gt;,
+## #   shellWeight &lt;dbl&gt;, rings &lt;dbl&gt;, sex_factor &lt;fct&gt;</code></pre>
+<pre class="r"><code>abaloneMod %&gt;%
+  filter(is.na(height))</code></pre>
+<pre><code>## # A tibble: 2 x 11
+##      X1 sex   length diameter height wholeWeight shuckedWeight visceraWeight
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+## 1  1258 I      0.43      0.34     NA       0.428        0.206         0.086 
+## 2  3997 I      0.315     0.23     NA       0.134        0.0575        0.0285
+## # … with 3 more variables: shellWeight &lt;dbl&gt;, rings &lt;dbl&gt;, sex_factor &lt;fct&gt;</code></pre>
 <p>Let’s check the stats for <code>height</code> with the summary function before and after the missing data was added for implausible values.</p>
 <pre class="r"><code># before creating the NAs
 abalone %&gt;%
@@ -429,13 +449,14 @@ abaloneMod %&gt;%
 <pre><code>## [1] NA</code></pre>
 <p>This code runs, but the result is <code>NA</code>. Since there are missing values <code>NA</code>s for the <code>height</code> variable, the result is <code>NA</code>.</p>
 <p>Let’s add some options on how to handle the missing data. For the <code>mean()</code> function, we can add the <code>na.rm=TRUE</code> option to tell the <code>mean()</code> function to first remove the missing <code>NA</code>s and then run then calculate the mean.</p>
+<p>“na’s” and remove them = na.rm()</p>
 <pre class="r"><code># add na.rm=TRUE option
 abaloneMod %&gt;%
   pull(height) %&gt;%
-  mean(na.rm=TRUE)</code></pre>
+  mean(na.rm=TRUE) # remove NAs first, then compute the mean</code></pre>
 <pre><code>## [1] 0.1395832</code></pre>
 <p>Also try with <code>summarise()</code> function from <strong>dplyr</strong> to add additional information.</p>
-<p>For this exmaple below we’ve added 3 summary statistics.</p>
+<p>For this example below we’ve added 3 summary statistics.</p>
 <ul>
 <li><code>n = n()</code> which is from the <strong>dplyr</strong> package to give the total count of rows of data, even with missing data</li>
 <li>we added <code>nmiss = sum(is.na(height))</code> which 1st runs the <code>is.na()</code> function which returns 0 for not missing and 1 for missing and then the <code>sum()</code> function counts up the number of missing values for the variable <code>height</code></li>

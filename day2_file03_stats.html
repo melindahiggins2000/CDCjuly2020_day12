@@ -439,7 +439,23 @@ ttp</code></pre>
 <div id="your-turn" class="section level2">
 <h2>Your turn</h2>
 <p>Run a t-test for the abalone heights between males and females in the <code>abaloneAdults</code> dataset and display your results how ever you would like to.</p>
-<pre class="r"><code># insert your code here</code></pre>
+<pre class="r"><code># insert your code here
+tth &lt;- t.test(height ~ sex, 
+              var.equal = TRUE,
+              data=abaloneAdults)
+tth</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  height by sex
+## t = 4.8048, df = 2832, p-value = 1.63e-06
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.003483714 0.008287431
+## sample estimates:
+## mean in group F mean in group M 
+##       0.1572665       0.1513809</code></pre>
+<p>The pooled t-test for the difference between the average height (in mm) for females 0.1573 and average height for males 0.1514 was significant with a p-value of 1.6e-06.</p>
 </div>
 <div id="lets-create-a-median-split-for-rings" class="section level2">
 <h2>Let’s create a median split for rings</h2>
@@ -474,30 +490,29 @@ gmodels::CrossTable(abaloneAdults$sex,
                     prop.c=TRUE,      # yes col %
                     prop.t=FALSE,     # no total %
                     prop.chisq=FALSE, # no chisq proportion
-                    chisq=TRUE)       # yes run chisq test</code></pre>
+                    chisq=TRUE,
+                    fisher = TRUE,
+                    format = &quot;SPSS&quot;)       # yes run chisq test</code></pre>
 <pre><code>## 
-##  
 ##    Cell Contents
 ## |-------------------------|
-## |                       N |
-## |           N / Col Total |
+## |                   Count |
+## |          Column Percent |
 ## |-------------------------|
 ## 
-##  
 ## Total Observations in Table:  2835 
 ## 
-##  
 ##                   | abaloneAdults$highrings 
-## abaloneAdults$sex |     FALSE |      TRUE | Row Total | 
+## abaloneAdults$sex |    FALSE  |     TRUE  | Row Total | 
 ## ------------------|-----------|-----------|-----------|
-##                 F |       672 |       635 |      1307 | 
-##                   |     0.436 |     0.491 |           | 
+##                 F |      672  |      635  |     1307  | 
+##                   |   43.552% |   49.149% |           | 
 ## ------------------|-----------|-----------|-----------|
-##                 M |       871 |       657 |      1528 | 
-##                   |     0.564 |     0.509 |           | 
+##                 M |      871  |      657  |     1528  | 
+##                   |   56.448% |   50.851% |           | 
 ## ------------------|-----------|-----------|-----------|
-##      Column Total |      1543 |      1292 |      2835 | 
-##                   |     0.544 |     0.456 |           | 
+##      Column Total |     1543  |     1292  |     2835  | 
+##                   |   54.427% |   45.573% |           | 
 ## ------------------|-----------|-----------|-----------|
 ## 
 ##  
@@ -512,20 +527,46 @@ gmodels::CrossTable(abaloneAdults$sex,
 ## ------------------------------------------------------------
 ## Chi^2 =  8.641739     d.f. =  1     p =  0.003285477 
 ## 
-## </code></pre>
+##  
+## Fisher&#39;s Exact Test for Count Data
+## ------------------------------------------------------------
+## Sample estimate odds ratio:  0.7983284 
+## 
+## Alternative hypothesis: true odds ratio is not equal to 1
+## p =  0.003168308 
+## 95% confidence interval:  0.6862297 0.9286074 
+## 
+## Alternative hypothesis: true odds ratio is less than 1
+## p =  0.001642574 
+## 95% confidence interval:  0 0.9067019 
+## 
+## Alternative hypothesis: true odds ratio is greater than 1
+## p =  0.9987167 
+## 95% confidence interval:  0.7028539 Inf 
+## 
+## 
+##  
+##        Minimum expected frequency: 595.6416</code></pre>
 <p>We can also run a simple <code>chisq.test()</code> of this data and save the results like we did for the t-test.</p>
 <pre class="r"><code>cs &lt;- chisq.test(abaloneAdults$sex,
-                 abaloneAdults$highrings)</code></pre>
+                 abaloneAdults$highrings,
+                 correct = FALSE)
+cs</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  abaloneAdults$sex and abaloneAdults$highrings
+## X-squared = 8.8656, df = 1, p-value = 0.002906</code></pre>
 <p>Look at some of the values in this saved object <code>cs</code>.</p>
 <pre class="r"><code>cs$statistic</code></pre>
 <pre><code>## X-squared 
-##  8.641739</code></pre>
+##   8.86556</code></pre>
 <pre class="r"><code>cs$parameter</code></pre>
 <pre><code>## df 
 ##  1</code></pre>
 <pre class="r"><code>cs$p.value</code></pre>
-<pre><code>## [1] 0.003285477</code></pre>
-<p>Again we could write a sentence - There is a significant association between abalone sex and having the number of rings be greater than 10, p-value = 0.0032855.</p>
+<pre><code>## [1] 0.002906011</code></pre>
+<p>Again we could write a sentence - There is a significant association between abalone sex and having the number of rings be greater than 10, p-value = 0.002906.</p>
 </div>
 <div id="your-turn-1" class="section level2">
 <h2>Your turn</h2>
@@ -533,7 +574,15 @@ gmodels::CrossTable(abaloneAdults$sex,
 <pre class="r"><code>abaloneAdults &lt;- abaloneAdults %&gt;%
   mutate(shell_ltv = shellWeight &lt; visceraWeight)</code></pre>
 <p>Run the chi-square test between <code>abaloneAdults$sex</code> and <code>abaloneAdults$shell_ltv</code>.</p>
-<pre class="r"><code># insert your code here</code></pre>
+<pre class="r"><code># insert your code here
+chisq.test(abaloneAdults$sex,
+           abaloneAdults$shell_ltv,
+           correct = FALSE)</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  abaloneAdults$sex and abaloneAdults$shell_ltv
+## X-squared = 0.040613, df = 1, p-value = 0.8403</code></pre>
 </div>
 <div id="save-the-modifications-for-abaloneadults" class="section level2">
 <h2>Save the modifications for <code>abaloneAdults</code></h2>

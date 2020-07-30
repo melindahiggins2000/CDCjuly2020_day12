@@ -85,8 +85,13 @@ Run a t-test for the abalone heights between males and females in the `abaloneAd
 
 ```{r}
 # insert your code here
-
+tth <- t.test(height ~ sex, 
+              var.equal = TRUE,
+              data=abaloneAdults)
+tth
 ```
+
+The pooled t-test for the difference between the average height (in mm) for females `r round(tth$estimate[1], digits=4)` and average height for males `r round(tth$estimate[2], digits=4)` was significant with a p-value of `r format(tth$p.value, digits=2)`.
 
 
 ## Let's create a median split for rings
@@ -134,14 +139,18 @@ gmodels::CrossTable(abaloneAdults$sex,
                     prop.c=TRUE,      # yes col %
                     prop.t=FALSE,     # no total %
                     prop.chisq=FALSE, # no chisq proportion
-                    chisq=TRUE)       # yes run chisq test
+                    chisq=TRUE,
+                    fisher = TRUE,
+                    format = "SPSS")       # yes run chisq test
 ```
 
 We can also run a simple `chisq.test()` of this data and save the results like we did for the t-test.
 
 ```{r}
 cs <- chisq.test(abaloneAdults$sex,
-                 abaloneAdults$highrings)
+                 abaloneAdults$highrings,
+                 correct = FALSE)
+cs
 ```
 
 Look at some of the values in this saved object `cs`.
@@ -161,13 +170,16 @@ Run a chi-square test to compare abalone sex for abalones whose shell weights ar
 ```{r}
 abaloneAdults <- abaloneAdults %>%
   mutate(shell_ltv = shellWeight < visceraWeight)
+
 ```
 
 Run the chi-square test between `abaloneAdults$sex` and      `abaloneAdults$shell_ltv`.
 
 ```{r}
 # insert your code here
-
+chisq.test(abaloneAdults$sex,
+           abaloneAdults$shell_ltv,
+           correct = FALSE)
 
 ```
 

@@ -423,6 +423,10 @@ slm1</code></pre>
 ## Residual standard error: 2.681 on 4167 degrees of freedom
 ## Multiple R-squared:  0.3086, Adjusted R-squared:  0.3084 
 ## F-statistic:  1860 on 1 and 4167 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>slm1[[&quot;coefficients&quot;]]</code></pre>
+<pre><code>##              Estimate Std. Error  t value     Pr(&gt;|t|)
+## (Intercept)  3.610039  0.1862663 19.38107 3.430299e-80
+## length      14.933905  0.3463122 43.12266 0.000000e+00</code></pre>
 <p>Model 2 age by wholeWeight</p>
 <pre class="r"><code>lm2 &lt;- lm(age ~ wholeWeight, data = abaloneMod_complete)
 slm2 &lt;- summary(lm2)
@@ -470,7 +474,7 @@ slm3</code></pre>
 ## Multiple R-squared:  0.313,  Adjusted R-squared:  0.3126 
 ## F-statistic: 948.8 on 2 and 4166 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Compare the full model <code>lm3</code> to the reduced models <code>lm1</code> or <code>lm2</code>.</p>
-<pre class="r"><code>anova(lm1, lm3)</code></pre>
+<pre class="r"><code>anova(lm1, lm3) # model with length to full model with both</code></pre>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: age ~ length
@@ -480,7 +484,7 @@ slm3</code></pre>
 ## 2   4166 29753  1     190.5 26.673 2.522e-07 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre class="r"><code>anova(lm2, lm3)</code></pre>
+<pre class="r"><code>anova(lm2, lm3) # model with WW to full model with both</code></pre>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: age ~ wholeWeight
