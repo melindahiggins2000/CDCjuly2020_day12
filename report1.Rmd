@@ -1,0 +1,61 @@
+---
+title: "Report Day 2 Morning"
+author: "Melinda Higgins"
+date: "7/30/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# set up knitr options
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+# load libraries needed for this document
+library(dplyr)
+library(Hmisc)
+library(readr)
+
+load("abaloneMod.RData")
+```
+
+## Figure 1 of Abalone Rings by sex
+
+```{r}
+ggplot(data = abaloneMod,
+       aes(x=sex, y=rings)) +
+  geom_boxplot()
+```
+
+Here is Figure 1 which shows the distribution of the number of rings by abalone sex.
+
+## Figure 2 Scatterplot of Rings by Whole Weight
+
+```{r}
+ggplot(data = abaloneMod,
+       aes(x=wholeWeight, y=rings)) +
+  geom_point() +
+  geom_abline(intercept=0, slope=1)
+
+```
+
+Scatterplot of Whole Weight to help predict number of rings
+
+## Table 1 of Length and Whole Weight statistics by sex
+
+```{r results='asis'}
+library(arsenal)
+table_one <- 
+  tableby(sex ~ length + wholeWeight, data = abaloneMod)
+summary(table_one, title = "Abalone Length and Whole Weight by Sex")
+```
+
+Here are the summary stats for abalones dimension length and whole weight by sex.
+
+
+
+
+

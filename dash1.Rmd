@@ -1,0 +1,47 @@
+---
+title: "Abalones"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(readr)
+abalone <- readr::read_csv("abalone.csv")
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+ggplot(data = abalone,
+       aes(x=shellWeight, y=wholeWeight)) +
+  geom_point(aes(color=sex)) +
+  geom_smooth(color="red", method=lm) +
+  facet_wrap(~sex)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+ggplot(data = abalone,
+       aes(x=shellWeight, y=wholeWeight)) +
+  geom_point(aes(color=sex)) +
+  geom_smooth(color="red", method=lm) +
+  facet_wrap(~sex)
+```
+
+### Chart C
+
+```{r}
+summary(abalone$height)
+```
+
