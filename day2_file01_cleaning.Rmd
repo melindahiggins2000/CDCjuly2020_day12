@@ -1,0 +1,293 @@
+---
+title: "Day 2 - File 01 - Data Cleaning"
+author: "Melinda Higgins"
+date: "7/29/2020"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# set up knitr options
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+# load libraries needed for this document
+library(dplyr)
+library(Hmisc)
+library(readr)
+
+# load the abalone dataset
+abalone <- readr::read_csv("abalone.csv")
+# add sex as a factor type variable
+abalone$sex_factor <- factor(abalone$sex,
+                             levels = c("M","F","I"),
+                             labels = c("Male",
+                                        "Female",
+                                        "Immature"))
+
+```
+
+## Data errors/issues in Abalone dataset
+
+As we saw yesterday in our Day 1 exercises, there are a few typos and errors in the Abalone dataset. Here are the key issues in this dataset:
+
+1. There are heights = 0 which should not be possible. Perhaps this is a numerical precision issue in how the data were recorded, but without further information, 0's should not be possible. Let's set these values to `NA` (not applicable) or "missing" or "unknown".
+
+2. As we saw yesterday there was at least 1 abalone whose `shuckedWeight` was larger than its `wholeWeight` which isn't possible. Again let's set this abalone's shucked weight and whole weight to unknown or to `NA`.
+
+3. We also saw there were a few abalones whose length was not their longest measurement. So, again let's set these values to missing `NA`.
+
+To make modification to the dataset, we will use the `mutate()` function from the **dplyr** package.
+
+We will also create a new dataset called abaloneMod which has our modifications applied to this dataset. This is better than writing over the original data.
+
+Look at case(s) where height == 0. Use the `filter()` function from **dplyr**.
+
+NOTE: You do need to use a double equals for the logical operator of "is equal to" `==`.
+
+```{r}
+abalone %>%
+  filter(height == 0)
+```
+
+We can print these "case IDs" to the screen to help us go back and check these data.
+
+```{r}
+abalone %>%
+  filter(height == 0) %>%
+  select(X1)
+```
+
+Using this information, create a new modified dataset `abaloneMod` that sets height equal to 0 to missing.
+
+```{r}
+# create abaloneMod
+# set height == 0 to NA
+abaloneMod <- abalone %>%
+  mutate(height = ifelse(height==0, NA, height))
+```
+
+Let's check the stats for `height` with the summary function before and after the missing data was added for implausible values.
+
+```{r}
+# before creating the NAs
+abalone %>%
+  pull(height) %>%
+  summary()
+
+# after creating the NAs for height=0
+abaloneMod %>%
+  pull(height) %>%
+  summary()
+```
+
+Notice that the output for `summary()` now shows 2 NA's - indicating we have 2 missing values for the variable `height` in the abalone dataset.
+
+## Missing Data issues
+
+Many R functions will throw errors if/when you have missing data. Most have options you can set to help adjust for the missing data so the function will execute and run correctly.
+
+For example, let's see how the `mean()` function runs with missing data.
+
+```{r}
+# after creating the NAs for height=0
+abaloneMod %>%
+  pull(height) %>%
+  mean()
+```
+
+This code runs, but the result is `NA`. Since there are missing values `NA`s for the `height` variable, the result is `NA`.
+
+Let's add some options on how to handle the missing data. For the `mean()` function, we can add the `na.rm=TRUE` option to tell the `mean()` function to first remove the missing `NA`s and then run then calculate the mean.
+
+```{r}
+# add na.rm=TRUE option
+abaloneMod %>%
+  pull(height) %>%
+  mean(na.rm=TRUE)
+```
+
+Also try with `summarise()` function from **dplyr** to add additional information.
+
+For this exmaple below we've added 3 summary statistics.
+
+* `n = n()` which is from the **dplyr** package to give the total count of rows of data, even with missing data
+* we added `nmiss = sum(is.na(height))` which 1st runs the `is.na()` function which returns 0 for not missing and 1 for missing and then the `sum()` function counts up the number of missing values for the variable `height`
+* and finally we add the `mean()` of `height` excluding the missing values. 
+
+So, the mean height reported here is out of 4175 abalone heights with 2 abalones missing height measurements.
+
+```{r}
+# add na.rm=TRUE option
+abaloneMod %>%
+  select(height) %>%
+  summarise(n_ht = n(),
+            nmiss_ht = sum(is.na(height)),
+            mean_ht = mean(height, na.rm=TRUE))
+```
+
+## More modification of the Abalone dataset
+
+Let's add missing values for the other issues with this dataset. Set the weights to `NA` where shucked weight is > whole weight.
+
+```{r}
+# create abaloneMod
+# If shuckedWeight is > wholeWeight set both values = NA
+abaloneMod <- abaloneMod %>%
+  mutate(shuckedWeight = 
+           ifelse(shuckedWeight > wholeWeight, NA,
+                  shuckedWeight),
+         wholeWeight = 
+           ifelse(shuckedWeight > wholeWeight, NA,
+                  wholeWeight))
+```
+
+## Your turn
+
+Get the means of `shuckedWeight` and `wholeWeight` from `abaloneMod` now that we've set these values to missing where the shucked weight was > the whole weight for that abalone.
+
+HINT: Start with the example above:
+
+```
+abaloneMod %>%
+  select(height) %>%
+  summarise(n_ht = n(),
+            nmiss_ht = sum(is.na(height)),
+            mean_ht = mean(height, na.rm=TRUE))
+```
+
+```{r}
+# put the answer here
+
+abaloneMod %>%
+  select(shuckedWeight, wholeWeight) %>%
+  summarise(n_sw = n(),
+            nmiss_sw = sum(is.na(shuckedWeight)),
+            mean_sw = mean(shuckedWeight, na.rm=TRUE),
+            n_ww = n(),
+            nmiss_ww = sum(is.na(wholeWeight)),
+            mean_ww = mean(wholeWeight, na.rm=TRUE))
+
+```
+
+## One more issue to clean up in the dataset
+
+Let's see if/where length was perhaps shorter < than height or diameter. We can quickly view these rows (cases) using the `filter()` function from the **dplyr** package.
+
+```{r}
+# rows where length is shorter than height
+abaloneMod %>%
+  filter(length < height)
+
+# rows where length is shorter than diameter
+abaloneMod %>%
+  filter(length < diameter)
+
+# rows where EITHER length was shorter than height or diameter
+# the | operator is used for "or"
+abaloneMod %>%
+  filter((length < height) | (length < diameter))
+
+# learn more - type in help("|") to see the list of other logical operators such as ! & and more
+```
+
+Using this knowledge, let's set these dimension values to missing where either length is < height OR < diameter.
+
+```{r}
+# If (length < height) | (length < diameter) set all values = NA
+abaloneMod <- abaloneMod %>%
+  mutate(length = 
+           ifelse((length < height) | (length < diameter), 
+                  NA,
+                  length),
+         height = 
+           ifelse((length < height) | (length < diameter), 
+                  NA,
+                  height),
+         diameter = 
+           ifelse((length < height) | (length < diameter), 
+                  NA,
+                  diameter))
+```
+
+And get means and n and number missing for these 3 variables adjusting for the new missing `NA` values.
+
+```{r}
+abaloneMod %>%
+  select(length, height, diameter) %>%
+  summarise(n_lt = n(),
+            nmiss_lt = sum(is.na(length)),
+            mean_lt = mean(length, na.rm=TRUE),
+            nmiss_ht = sum(is.na(height)),
+            mean_ht = mean(height, na.rm=TRUE),
+            nmiss_dm = sum(is.na(diameter)),
+            mean_dm = mean(diameter, na.rm=TRUE))
+```
+
+Now that we have missing data, let's see what a summary table of these 3 dimension variables looks like using the **arsenal** package to make a summary table.
+
+Notice that the number of missing values is now displayed.
+
+**Remember** Use the `abaloneMod` updated dataset.
+
+```{r}
+library(arsenal)
+tab_dimension <- 
+  tableby(~length + height + diameter,
+          data=abaloneMod)
+summary(tab_dimension)
+```
+
+Make this table again and show the summary statistics by `sex`. Now you can see the more of the values were set to missing for the "I" infants.
+
+```{r}
+tab_dimension <- 
+  tableby(sex ~ length + height + diameter,
+          data=abaloneMod)
+summary(tab_dimension)
+```
+
+## One more modification - calculate age
+
+Remember in the data notes that abalone age is equal to the number of rings + 1.5. So, let's go ahead and add `age` as a variable to our dataset computed from the number of rings + 1.5. Add this variable to our modified dataset, `abaloneMod`.
+
+We'll again use the `mutate()` function from **dplyr**.
+
+```{r}
+abaloneMod <- abaloneMod %>%
+  mutate(age = rings + 1.5)
+```
+
+Get the summary stats for `rings` and `age` by `sex` - again use the arsenal package.
+
+```{r}
+tab_agerings <- 
+  tableby(sex ~ age + rings,
+          data=abaloneMod)
+summary(tab_agerings)
+```
+
+## Save the update data file
+
+To save the `abaloneMod` dataset for use in another R markdown file or other R scripts or projects, we can save it a couple of ways.
+
+Save it as an R data file "abaloneMod.RData".
+
+```{r}
+save(abaloneMod,
+     file = "abaloneMod.RData")
+```
+
+Save it as a CSV output using the `write_csv()` function from **readr** package.
+
+```{r}
+library(readr)
+readr::write_csv(abaloneMod, "abaloneMod.csv")
+```
+

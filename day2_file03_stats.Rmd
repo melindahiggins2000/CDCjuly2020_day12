@@ -1,0 +1,179 @@
+---
+title: "Day 2 - File 03 - Statistical Tests"
+author: "Melinda Higgins"
+date: "7/29/2020"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# set up knitr options
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+# load libraries needed for this document
+library(dplyr)
+library(Hmisc)
+library(readr)
+
+# load the abalone modified dataset
+load("abaloneMod.RData")
+```
+
+## Run a t-test
+
+The function to perform a t-test is `t.test()`.
+
+Let's look at running a t-test to compare the number of rings between males and females ignoring the infants.
+
+Let's first create a subset of the data for just the adults.
+
+```{r}
+# select cases where sex does not equal to "I" for infants
+abaloneAdults <- abaloneMod %>%
+  filter(sex != "I")
+```
+
+Run t-test using the formula syntax of `rings ~ sex`.
+
+NOTE: `var.equal=FALSE` is the default for the `t.test()` function - so by default R runs the unpooled t-test. You can change this setting to TRUE if you wish.
+
+```{r}
+t.test(rings ~ sex, 
+       var.equal = TRUE,
+       data=abaloneAdults)
+```
+
+This gives us the basic output for the pooled t-test, but there is a lot more we can get. So, let's save this output as an object and see what is there and how to pull it out.
+
+```{r}
+ttp <- t.test(rings ~ sex, 
+              var.equal = TRUE,
+              data=abaloneAdults)
+ttp
+```
+
+This `ttp` object is a list of 10 other objects. Let's see what is there and how to pull out the values we might want.
+
+```{r}
+ttp$statistic    # t-test statistic
+ttp$parameter    # degrees of freedom for t-test
+ttp$p.value      # p-value for the t-test
+ttp$conf.int     # 95% confidence interval for the mean diff
+ttp$estimate     # the 2 group means for F and M
+ttp$estimate[1]  # the mean of the F females
+ttp$estimate[2]  # the mean of the M males
+```
+
+We could use these to help customize our output further if we wish to do so. For example, we could write the following sentence.
+
+The pooled t-test for the difference between the average number of rings for females `r ttp$estimate[1]` and number of rings for males `r ttp$estimate[2]` was significant with a p-value of `r ttp$p.value`.
+
+We could clean this sentence up a little bit by adding the `round()` function or the `format()` function to limit the number of decimal places shown. Let's set the number of decimal places to 4 when we round the numbers and set significant digits to 2 for the p-value.
+
+The pooled t-test for the difference between the average number of rings for females `r round(ttp$estimate[1], digits=4)` and number of rings for males `r round(ttp$estimate[2], digits=4)` was significant with a p-value of `r format(ttp$p.value, digits=2)`.
+
+## Your turn
+
+Run a t-test for the abalone heights between males and females in the `abaloneAdults` dataset and display your results how ever you would like to.
+
+```{r}
+# insert your code here
+
+```
+
+
+## Let's create a median split for rings
+
+Save the median number of rings.
+
+```{r}
+medrings <- abaloneAdults %>%
+  pull(rings) %>%
+  median()
+```
+
+Create a new variable for low rings and high rings. This will create a TRUE/FALSE logical variable called `highrings` for abalones with rings > 10 (the median number of rings).
+
+```{r}
+abaloneAdults <- abaloneAdults %>%
+  mutate(highrings = rings > medrings)
+```
+
+Look at a table summary for `highrings`.
+
+```{r}
+abaloneAdults %>%
+  pull(highrings) %>%
+  table()
+```
+
+We can also look at this with `sex`.
+
+```{r}
+abaloneAdults %>%
+  select(sex, highrings) %>%
+  table()
+```
+
+We can make a better "Cross Table" using the gmodels package.
+
+And we can add some options and also get a chi-square test result.
+
+```{r}
+library(gmodels)
+gmodels::CrossTable(abaloneAdults$sex, 
+                    abaloneAdults$highrings,
+                    prop.r=FALSE,     # no row %
+                    prop.c=TRUE,      # yes col %
+                    prop.t=FALSE,     # no total %
+                    prop.chisq=FALSE, # no chisq proportion
+                    chisq=TRUE)       # yes run chisq test
+```
+
+We can also run a simple `chisq.test()` of this data and save the results like we did for the t-test.
+
+```{r}
+cs <- chisq.test(abaloneAdults$sex,
+                 abaloneAdults$highrings)
+```
+
+Look at some of the values in this saved object `cs`.
+
+```{r}
+cs$statistic
+cs$parameter
+cs$p.value
+```
+
+Again we could write a sentence - There is a significant association between abalone sex and having the number of rings be greater than 10, p-value = `r cs$p.value`.
+
+## Your turn
+
+Run a chi-square test to compare abalone sex for abalones whose shell weights are < their viscera weights. I'll create the new variable for you.
+
+```{r}
+abaloneAdults <- abaloneAdults %>%
+  mutate(shell_ltv = shellWeights < visceraWeight)
+```
+
+Run the chi-square test between `abaloneAdults$sex` and      `abaloneAdults$shell_ltv`.
+
+```{r}
+# insert your code here
+
+
+```
+
+## Save the modifications for `abaloneAdults`
+
+```{r}
+save(abaloneAdults, "abaloneAdults.RData")
+```
+

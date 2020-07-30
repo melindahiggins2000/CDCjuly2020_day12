@@ -1,0 +1,78 @@
+---
+title: "Day 2 - File 02 - Data Import and Export"
+author: "Melinda Higgins"
+date: "7/29/2020"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# set up knitr options
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+# load libraries needed for this document
+library(dplyr)
+library(Hmisc)
+library(readr)
+```
+
+## Loading .RData files
+
+When you load in the native binary .RData formatted file, the objects stored in that datafile all get loaded into your R environment. When we saved this before we only saved the `abaloneMod` dataset - only 1 object.
+
+```{r}
+load("abaloneMod.RData")
+```
+
+But you can save multiple objects into one R binary datafile.
+
+As a quick example - create 3 simple objects, a, b, c. Save all of them in an .RData file.
+
+```{r}
+a <- 4
+b <- c(3,2,1)
+c <- list(a,b)
+a
+b
+c
+ls()
+
+```
+
+Save these
+
+```{r}
+save(a,b,c, file = "abc.RData")
+```
+
+Remove these 3 objects from the environment
+
+```{r}
+rm(a,b,c)
+```
+
+Load them back in
+
+```{r}
+load("abc.RData")
+ls()
+```
+
+## Other ways to import data into R
+
+Look at the File/Import Dataset options.
+
+Let's try the code for importing the original abalone dataset from the .SAv formatted file from SPSS.
+
+```{r}
+library(haven)
+abalone <- read_sav("abalone.sav")
+```
+

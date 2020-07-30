@@ -1,0 +1,134 @@
+---
+title: "Day 2 - File 04 - Fit and Compare Models"
+author: "Melinda Higgins"
+date: "7/29/2020"
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# set up knitr options
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+# load libraries needed for this document
+library(dplyr)
+library(Hmisc)
+library(readr)
+
+# load the abalone modified dataset
+load("abaloneMod.RData")
+```
+
+## Let's look at some more plots
+
+Let's look at some more plots of variables we think may be related to predicting the age of the abalones.
+
+Let's look at age with length and whole weight.
+
+For this let's try to **GGally** package which makes some cool plots especially matrix scatterplots. It is an extension package for **ggplot2**.
+
+Learn more about **GGally** package at [https://cran.r-project.org/web/packages/GGally/index.html](https://cran.r-project.org/web/packages/GGally/index.html).
+
+Also check out the "R Graph Gallery" for ideas, see [https://www.r-graph-gallery.com/199-correlation-matrix-with-ggally.html](https://www.r-graph-gallery.com/199-correlation-matrix-with-ggally.html).
+
+```{r}
+library(GGally)
+abaloneMod %>% 
+  select(age, length, wholeWeight) %>%
+  GGally::ggpairs()
+```
+
+Color the points by sex - add this aesthetic to the `ggpairs()` function.
+
+```{r}
+abaloneMod %>% 
+  select(sex, age, length, wholeWeight) %>%
+  GGally::ggpairs(aes(color=sex))
+```
+
+## Fit linear models
+
+Since I'd like to compare models, I need to work with a dataset that has no missing data. We can create a dataset with no missing values across all variables as follows.
+
+```{r}
+abaloneMod_complete <- abaloneMod %>%
+  filter(complete.cases(abaloneMod))
+```
+
+Fit 3 models and save the results and look at the summary of each model.
+
+Model 1 age by length.
+
+```{r}
+lm1 <- lm(age ~ length, data = abaloneMod_complete)
+lm1
+slm1 <- summary(lm1)
+slm1
+```
+
+Model 2 age by wholeWeight
+
+```{r}
+lm2 <- lm(age ~ wholeWeight, data = abaloneMod_complete)
+slm2 <- summary(lm2)
+slm2
+```
+
+Model 3 age by length and wholeWeight
+
+```{r}
+lm3 <- lm(age ~ length + wholeWeight,
+          data=abaloneMod_complete)
+slm3 <- summary(lm3)
+slm3
+```
+
+Compare the full model `lm3` to the reduced models `lm1` or `lm2`.
+
+```{r}
+anova(lm1, lm3)
+
+anova(lm2, lm3)
+```
+
+## Make tables of the coefficients of each model
+
+```{r}
+library(knitr)
+knitr::kable(slm1$coefficients,
+             caption = "Model 1 Age by Length")
+knitr::kable(slm2$coefficients,
+             caption = "Model 2 Age by Whole Weight")
+knitr::kable(slm3$coefficients,
+             caption = "Model 3 Age by Length and Whole Weight")
+```
+
+## Another way to compare models
+
+Use the **stargazer** package to compare models
+
+The default output type is "latex" for making PDF documents. You will need to change this option depending on if you are knitting to HTML or to PDF. This will NOT work for WORD files.
+
+The code chunk option must be set to `results='asis'`.
+
+```{r results='asis'}
+library(stargazer)
+
+# set for HTML output
+stargazer(lm1, lm2, lm3, type="html")
+
+# uncomment this if knitting to PDF
+# stargazer(lm1, lm2, lm3, type="latex")
+
+# comment all of this out if knitting to WORD
+```
+
+
+
