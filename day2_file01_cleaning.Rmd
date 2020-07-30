@@ -236,7 +236,7 @@ Notice that the number of missing values is now displayed.
 
 **Remember** Use the `abaloneMod` updated dataset.
 
-```{r}
+```{r results='asis'}
 library(arsenal)
 tab_dimension <- 
   tableby(~length + height + diameter,
@@ -246,7 +246,7 @@ summary(tab_dimension)
 
 Make this table again and show the summary statistics by `sex`. Now you can see the more of the values were set to missing for the "I" infants.
 
-```{r}
+```{r results='asis'}
 tab_dimension <- 
   tableby(sex ~ length + height + diameter,
           data=abaloneMod)
@@ -266,7 +266,7 @@ abaloneMod <- abaloneMod %>%
 
 Get the summary stats for `rings` and `age` by `sex` - again use the arsenal package.
 
-```{r}
+```{r results='asis'}
 tab_agerings <- 
   tableby(sex ~ age + rings,
           data=abaloneMod)

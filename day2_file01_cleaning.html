@@ -12,7 +12,7 @@
 <meta name="author" content="Melinda Higgins" />
 
 
-<title>Day 2 - File 03 - Statistical Tests</title>
+<title>Day 2 - File 01 - Data Cleaning</title>
 
 <script>/*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 !function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.3",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for("boolean"==typeof g&&(j=g,g=arguments[h]||{},h++),"object"==typeof g||m.isFunction(g)||(g={}),h===i&&(g=this,h--);i>h;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&&(j&&c&&(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&&m.isArray(a)?a:[]):f=a&&m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&&(g[d]=c));return g},m.extend({expando:"jQuery"+(l+Math.random()).replace(/\D/g,""),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return"function"===m.type(a)},isArray:Array.isArray||function(a){return"array"===m.type(a)},isWindow:function(a){return null!=a&&a==a.window},isNumeric:function(a){return!m.isArray(a)&&a-parseFloat(a)+1>=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||"object"!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&&!j.call(a,"constructor")&&!j.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.call(a,b)},type:function(a){return null==a?a+"":"object"==typeof a||"function"==typeof a?h[i.call(a)]||"object":typeof a},globalEval:function(b){b&&m.trim(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(o,"ms-").replace(p,q)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toLowerCase()===b.toLowerCase()},each:function(a,b,c){var d,e=0,f=a.length,g=r(a);if(c){if(g){for(;f>e;e++)if(d=b.apply(a[e],c),d===!1)break}else for(e in a)if(d=b.apply(a[e],c),d===!1)break}else if(g){for(;f>e;e++)if(d=b.call(a[e],e,a[e]),d===!1)break}else for(e in a)if(d=b.call(a[e],e,a[e]),d===!1)break;return a},trim:function(a){return null==a?"":(a+"").replace(n,"")},makeArray:function(a,b){var c=b||[];return null!=a&&(r(Object(a))?m.merge(c,"string"==typeof a?[a]:a):f.call(c,a)),c},inArray:function(a,b,c){var d;if(b){if(g)return g.call(b,a,c);for(d=b.length,c=c?0>c?Math.max(0,d+c):c:0;d>c;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,b){var c=+b.length,d=0,e=a.length;while(c>d)a[e++]=b[d++];if(c!==c)while(void 0!==b[d])a[e++]=b[d++];return a.length=e,a},grep:function(a,b,c){for(var d,e=[],f=0,g=a.length,h=!c;g>f;f++)d=!b(a[f],f),d!==h&&e.push(a[f]);return e},map:function(a,b,c){var d,f=0,g=a.length,h=r(a),i=[];if(h)for(;g>f;f++)d=b(a[f],f,c),null!=d&&i.push(d);else for(f in a)d=b(a[f],f,c),null!=d&&i.push(d);return e.apply([],i)},guid:1,proxy:function(a,b){var c,e,f;return"string"==typeof b&&(f=a[b],b=a,a=f),m.isFunction(a)?(c=d.call(arguments,2),e=function(){return a.apply(b||this,c.concat(d.call(arguments)))},e.guid=a.guid=a.guid||m.guid++,e):void 0},now:function(){return+new Date},support:k}),m.each("Boolean Number String Function Array Date RegExp Object Error".split(" "),function(a,b){h["[object "+b+"]"]=b.toLowerCase()});function r(a){var b="length"in a&&a.length,c=m.type(a);return"function"===c||m.isWindow(a)?!1:1===a.nodeType&&b?!0:"array"===c||0===b||"number"==typeof b&&b>0&&b-1 in a}var s=function(a){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u="sizzle"+1*new Date,v=a.document,w=0,x=0,y=ha(),z=ha(),A=ha(),B=function(a,b){return a===b&&(l=!0),0},C=1<<31,D={}.hasOwnProperty,E=[],F=E.pop,G=E.push,H=E.push,I=E.slice,J=function(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1},K="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",L="[\\x20\\t\\r\\n\\f]",M="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",N=M.replace("w","w#"),O="\\["+L+"*("+M+")(?:"+L+"*([*^$|!~]?=)"+L+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+N+"))|)"+L+"*\\]",P=":("+M+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+O+")*)|.*)\\)|)",Q=new RegExp(L+"+","g"),R=new RegExp("^"+L+"+|((?:^|[^\\\\])(?:\\\\.)*)"+L+"+$","g"),S=new RegExp("^"+L+"*,"+L+"*"),T=new RegExp("^"+L+"*([>+~]|"+L+")"+L+"*"),U=new RegExp("="+L+"*([^\\]'\"]*?)"+L+"*\\]","g"),V=new RegExp(P),W=new RegExp("^"+N+"$"),X={ID:new RegExp("^#("+M+")"),CLASS:new RegExp("^\\.("+M+")"),TAG:new RegExp("^("+M.replace("w","w*")+")"),ATTR:new RegExp("^"+O),PSEUDO:new RegExp("^"+P),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+L+"*(even|odd|(([+-]|)(\\d*)n|)"+L+"*(?:([+-]|)"+L+"*(\\d+)|))"+L+"*\\)|)","i"),bool:new RegExp("^(?:"+K+")$","i"),needsContext:new RegExp("^"+L+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+L+"*((?:-\\d)?\\d*)"+L+"*\\)|)(?=[^-]|$)","i")},Y=/^(?:input|select|textarea|button)$/i,Z=/^h\d$/i,$=/^[^{]+\{\s*\[native \w/,_=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,aa=/[+~]/,ba=/'|\\/g,ca=new RegExp("\\\\([\\da-f]{1,6}"+L+"?|("+L+")|.)","ig"),da=function(a,b,c){var d="0x"+b-65536;return d!==d||c?b:0>d?String.fromCharCode(d+65536):String.fromCharCode(d>>10|55296,1023&d|56320)},ea=function(){m()};try{H.apply(E=I.call(v.childNodes),v.childNodes),E[v.childNodes.length].nodeType}catch(fa){H={apply:E.length?function(a,b){G.apply(a,I.call(b))}:function(a,b){var c=a.length,d=0;while(a[c++]=b[d++]);a.length=c-1}}}function ga(a,b,d,e){var f,h,j,k,l,o,r,s,w,x;if((b?b.ownerDocument||b:v)!==n&&m(b),b=b||n,d=d||[],k=b.nodeType,"string"!=typeof a||!a||1!==k&&9!==k&&11!==k)return d;if(!e&&p){if(11!==k&&(f=_.exec(a)))if(j=f[1]){if(9===k){if(h=b.getElementById(j),!h||!h.parentNode)return d;if(h.id===j)return d.push(h),d}else if(b.ownerDocument&&(h=b.ownerDocument.getElementById(j))&&t(b,h)&&h.id===j)return d.push(h),d}else{if(f[2])return H.apply(d,b.getElementsByTagName(a)),d;if((j=f[3])&&c.getElementsByClassName)return H.apply(d,b.getElementsByClassName(j)),d}if(c.qsa&&(!q||!q.test(a))){if(s=r=u,w=b,x=1!==k&&a,1===k&&"object"!==b.nodeName.toLowerCase()){o=g(a),(r=b.getAttribute("id"))?s=r.replace(ba,"\\$&"):b.setAttribute("id",s),s="[id='"+s+"'] ",l=o.length;while(l--)o[l]=s+ra(o[l]);w=aa.test(a)&&pa(b.parentNode)||b,x=o.join(",")}if(x)try{return H.apply(d,w.querySelectorAll(x)),d}catch(y){}finally{r||b.removeAttribute("id")}}}return i(a.replace(R,"$1"),b,d,e)}function ha(){var a=[];function b(c,e){return a.push(c+" ")>d.cacheLength&&delete b[a.shift()],b[c+" "]=e}return b}function ia(a){return a[u]=!0,a}function ja(a){var b=n.createElement("div");try{return!!a(b)}catch(c){return!1}finally{b.parentNode&&b.parentNode.removeChild(b),b=null}}function ka(a,b){var c=a.split("|"),e=a.length;while(e--)d.attrHandle[c[e]]=b}function la(a,b){var c=b&&a,d=c&&1===a.nodeType&&1===b.nodeType&&(~b.sourceIndex||C)-(~a.sourceIndex||C);if(d)return d;if(c)while(c=c.nextSibling)if(c===b)return-1;return a?1:-1}function ma(a){return function(b){var c=b.nodeName.toLowerCase();return"input"===c&&b.type===a}}function na(a){return function(b){var c=b.nodeName.toLowerCase();return("input"===c||"button"===c)&&b.type===a}}function oa(a){return ia(function(b){return b=+b,ia(function(c,d){var e,f=a([],c.length,b),g=f.length;while(g--)c[e=f[g]]&&(c[e]=!(d[e]=c[e]))})})}function pa(a){return a&&"undefined"!=typeof a.getElementsByTagName&&a}c=ga.support={},f=ga.isXML=function(a){var b=a&&(a.ownerDocument||a).documentElement;return b?"HTML"!==b.nodeName:!1},m=ga.setDocument=function(a){var b,e,g=a?a.ownerDocument||a:v;return g!==n&&9===g.nodeType&&g.documentElement?(n=g,o=g.documentElement,e=g.defaultView,e&&e!==e.top&&(e.addEventListener?e.addEventListener("unload",ea,!1):e.attachEvent&&e.attachEvent("onunload",ea)),p=!f(g),c.attributes=ja(function(a){return a.className="i",!a.getAttribute("className")}),c.getElementsByTagName=ja(function(a){return a.appendChild(g.createComment("")),!a.getElementsByTagName("*").length}),c.getElementsByClassName=$.test(g.getElementsByClassName),c.getById=ja(function(a){return o.appendChild(a).id=u,!g.getElementsByName||!g.getElementsByName(u).length}),c.getById?(d.find.ID=function(a,b){if("undefined"!=typeof b.getElementById&&p){var c=b.getElementById(a);return c&&c.parentNode?[c]:[]}},d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){return a.getAttribute("id")===b}}):(delete d.find.ID,d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){var c="undefined"!=typeof a.getAttributeNode&&a.getAttributeNode("id");return c&&c.value===b}}),d.find.TAG=c.getElementsByTagName?function(a,b){return"undefined"!=typeof b.getElementsByTagName?b.getElementsByTagName(a):c.qsa?b.querySelectorAll(a):void 0}:function(a,b){var c,d=[],e=0,f=b.getElementsByTagName(a);if("*"===a){while(c=f[e++])1===c.nodeType&&d.push(c);return d}return f},d.find.CLASS=c.getElementsByClassName&&function(a,b){return p?b.getElementsByClassName(a):void 0},r=[],q=[],(c.qsa=$.test(g.querySelectorAll))&&(ja(function(a){o.appendChild(a).innerHTML="<a id='"+u+"'></a><select id='"+u+"-\f]' msallowcapture=''><option selected=''></option></select>",a.querySelectorAll("[msallowcapture^='']").length&&q.push("[*^$]="+L+"*(?:''|\"\")"),a.querySelectorAll("[selected]").length||q.push("\\["+L+"*(?:value|"+K+")"),a.querySelectorAll("[id~="+u+"-]").length||q.push("~="),a.querySelectorAll(":checked").length||q.push(":checked"),a.querySelectorAll("a#"+u+"+*").length||q.push(".#.+[+~]")}),ja(function(a){var b=g.createElement("input");b.setAttribute("type","hidden"),a.appendChild(b).setAttribute("name","D"),a.querySelectorAll("[name=d]").length&&q.push("name"+L+"*[*^$|!~]?="),a.querySelectorAll(":enabled").length||q.push(":enabled",":disabled"),a.querySelectorAll("*,:x"),q.push(",.*:")})),(c.matchesSelector=$.test(s=o.matches||o.webkitMatchesSelector||o.mozMatchesSelector||o.oMatchesSelector||o.msMatchesSelector))&&ja(function(a){c.disconnectedMatch=s.call(a,"div"),s.call(a,"[s!='']:x"),r.push("!=",P)}),q=q.length&&new RegExp(q.join("|")),r=r.length&&new RegExp(r.join("|")),b=$.test(o.compareDocumentPosition),t=b||$.test(o.contains)?function(a,b){var c=9===a.nodeType?a.documentElement:a,d=b&&b.parentNode;return a===d||!(!d||1!==d.nodeType||!(c.contains?c.contains(d):a.compareDocumentPosition&&16&a.compareDocumentPosition(d)))}:function(a,b){if(b)while(b=b.parentNode)if(b===a)return!0;return!1},B=b?function(a,b){if(a===b)return l=!0,0;var d=!a.compareDocumentPosition-!b.compareDocumentPosition;return d?d:(d=(a.ownerDocument||a)===(b.ownerDocument||b)?a.compareDocumentPosition(b):1,1&d||!c.sortDetached&&b.compareDocumentPosition(a)===d?a===g||a.ownerDocument===v&&t(v,a)?-1:b===g||b.ownerDocument===v&&t(v,b)?1:k?J(k,a)-J(k,b):0:4&d?-1:1)}:function(a,b){if(a===b)return l=!0,0;var c,d=0,e=a.parentNode,f=b.parentNode,h=[a],i=[b];if(!e||!f)return a===g?-1:b===g?1:e?-1:f?1:k?J(k,a)-J(k,b):0;if(e===f)return la(a,b);c=a;while(c=c.parentNode)h.unshift(c);c=b;while(c=c.parentNode)i.unshift(c);while(h[d]===i[d])d++;return d?la(h[d],i[d]):h[d]===v?-1:i[d]===v?1:0},g):n},ga.matches=function(a,b){return ga(a,null,null,b)},ga.matchesSelector=function(a,b){if((a.ownerDocument||a)!==n&&m(a),b=b.replace(U,"='$1']"),!(!c.matchesSelector||!p||r&&r.test(b)||q&&q.test(b)))try{var d=s.call(a,b);if(d||c.disconnectedMatch||a.document&&11!==a.document.nodeType)return d}catch(e){}return ga(b,n,null,[a]).length>0},ga.contains=function(a,b){return(a.ownerDocument||a)!==n&&m(a),t(a,b)},ga.attr=function(a,b){(a.ownerDocument||a)!==n&&m(a);var e=d.attrHandle[b.toLowerCase()],f=e&&D.call(d.attrHandle,b.toLowerCase())?e(a,b,!p):void 0;return void 0!==f?f:c.attributes||!p?a.getAttribute(b):(f=a.getAttributeNode(b))&&f.specified?f.value:null},ga.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)},ga.uniqueSort=function(a){var b,d=[],e=0,f=0;if(l=!c.detectDuplicates,k=!c.sortStable&&a.slice(0),a.sort(B),l){while(b=a[f++])b===a[f]&&(e=d.push(f));while(e--)a.splice(d[e],1)}return k=null,a},e=ga.getText=function(a){var b,c="",d=0,f=a.nodeType;if(f){if(1===f||9===f||11===f){if("string"==typeof a.textContent)return a.textContent;for(a=a.firstChild;a;a=a.nextSibling)c+=e(a)}else if(3===f||4===f)return a.nodeValue}else while(b=a[d++])c+=e(b);return c},d=ga.selectors={cacheLength:50,createPseudo:ia,match:X,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:!0}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:!0},"~":{dir:"previousSibling"}},preFilter:{ATTR:function(a){return a[1]=a[1].replace(ca,da),a[3]=(a[3]||a[4]||a[5]||"").replace(ca,da),"~="===a[2]&&(a[3]=" "+a[3]+" "),a.slice(0,4)},CHILD:function(a){return a[1]=a[1].toLowerCase(),"nth"===a[1].slice(0,3)?(a[3]||ga.error(a[0]),a[4]=+(a[4]?a[5]+(a[6]||1):2*("even"===a[3]||"odd"===a[3])),a[5]=+(a[7]+a[8]||"odd"===a[3])):a[3]&&ga.error(a[0]),a},PSEUDO:function(a){var b,c=!a[6]&&a[2];return X.CHILD.test(a[0])?null:(a[3]?a[2]=a[4]||a[5]||"":c&&V.test(c)&&(b=g(c,!0))&&(b=c.indexOf(")",c.length-b)-c.length)&&(a[0]=a[0].slice(0,b),a[2]=c.slice(0,b)),a.slice(0,3))}},filter:{TAG:function(a){var b=a.replace(ca,da).toLowerCase();return"*"===a?function(){return!0}:function(a){return a.nodeName&&a.nodeName.toLowerCase()===b}},CLASS:function(a){var b=y[a+" "];return b||(b=new RegExp("(^|"+L+")"+a+"("+L+"|$)"))&&y(a,function(a){return b.test("string"==typeof a.className&&a.className||"undefined"!=typeof a.getAttribute&&a.getAttribute("class")||"")})},ATTR:function(a,b,c){return function(d){var e=ga.attr(d,a);return null==e?"!="===b:b?(e+="","="===b?e===c:"!="===b?e!==c:"^="===b?c&&0===e.indexOf(c):"*="===b?c&&e.indexOf(c)>-1:"$="===b?c&&e.slice(-c.length)===c:"~="===b?(" "+e.replace(Q," ")+" ").indexOf(c)>-1:"|="===b?e===c||e.slice(0,c.length+1)===c+"-":!1):!0}},CHILD:function(a,b,c,d,e){var f="nth"!==a.slice(0,3),g="last"!==a.slice(-4),h="of-type"===b;return 1===d&&0===e?function(a){return!!a.parentNode}:function(b,c,i){var j,k,l,m,n,o,p=f!==g?"nextSibling":"previousSibling",q=b.parentNode,r=h&&b.nodeName.toLowerCase(),s=!i&&!h;if(q){if(f){while(p){l=b;while(l=l[p])if(h?l.nodeName.toLowerCase()===r:1===l.nodeType)return!1;o=p="only"===a&&!o&&"nextSibling"}return!0}if(o=[g?q.firstChild:q.lastChild],g&&s){k=q[u]||(q[u]={}),j=k[a]||[],n=j[0]===w&&j[1],m=j[0]===w&&j[2],l=n&&q.childNodes[n];while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if(1===l.nodeType&&++m&&l===b){k[a]=[w,n,m];break}}else if(s&&(j=(b[u]||(b[u]={}))[a])&&j[0]===w)m=j[1];else while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if((h?l.nodeName.toLowerCase()===r:1===l.nodeType)&&++m&&(s&&((l[u]||(l[u]={}))[a]=[w,m]),l===b))break;return m-=e,m===d||m%d===0&&m/d>=0}}},PSEUDO:function(a,b){var c,e=d.pseudos[a]||d.setFilters[a.toLowerCase()]||ga.error("unsupported pseudo: "+a);return e[u]?e(b):e.length>1?(c=[a,a,"",b],d.setFilters.hasOwnProperty(a.toLowerCase())?ia(function(a,c){var d,f=e(a,b),g=f.length;while(g--)d=J(a,f[g]),a[d]=!(c[d]=f[g])}):function(a){return e(a,0,c)}):e}},pseudos:{not:ia(function(a){var b=[],c=[],d=h(a.replace(R,"$1"));return d[u]?ia(function(a,b,c,e){var f,g=d(a,null,e,[]),h=a.length;while(h--)(f=g[h])&&(a[h]=!(b[h]=f))}):function(a,e,f){return b[0]=a,d(b,null,f,c),b[0]=null,!c.pop()}}),has:ia(function(a){return function(b){return ga(a,b).length>0}}),contains:ia(function(a){return a=a.replace(ca,da),function(b){return(b.textContent||b.innerText||e(b)).indexOf(a)>-1}}),lang:ia(function(a){return W.test(a||"")||ga.error("unsupported lang: "+a),a=a.replace(ca,da).toLowerCase(),function(b){var c;do if(c=p?b.lang:b.getAttribute("xml:lang")||b.getAttribute("lang"))return c=c.toLowerCase(),c===a||0===c.indexOf(a+"-");while((b=b.parentNode)&&1===b.nodeType);return!1}}),target:function(b){var c=a.location&&a.location.hash;return c&&c.slice(1)===b.id},root:function(a){return a===o},focus:function(a){return a===n.activeElement&&(!n.hasFocus||n.hasFocus())&&!!(a.type||a.href||~a.tabIndex)},enabled:function(a){return a.disabled===!1},disabled:function(a){return a.disabled===!0},checked:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&!!a.checked||"option"===b&&!!a.selected},selected:function(a){return a.parentNode&&a.parentNode.selectedIndex,a.selected===!0},empty:function(a){for(a=a.firstChild;a;a=a.nextSibling)if(a.nodeType<6)return!1;return!0},parent:function(a){return!d.pseudos.empty(a)},header:function(a){return Z.test(a.nodeName)},input:function(a){return Y.test(a.nodeName)},button:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&"button"===a.type||"button"===b},text:function(a){var b;return"input"===a.nodeName.toLowerCase()&&"text"===a.type&&(null==(b=a.getAttribute("type"))||"text"===b.toLowerCase())},first:oa(function(){return[0]}),last:oa(function(a,b){return[b-1]}),eq:oa(function(a,b,c){return[0>c?c+b:c]}),even:oa(function(a,b){for(var c=0;b>c;c+=2)a.push(c);return a}),odd:oa(function(a,b){for(var c=1;b>c;c+=2)a.push(c);return a}),lt:oa(function(a,b,c){for(var d=0>c?c+b:c;--d>=0;)a.push(d);return a}),gt:oa(function(a,b,c){for(var d=0>c?c+b:c;++d<b;)a.push(d);return a})}},d.pseudos.nth=d.pseudos.eq;for(b in{radio:!0,checkbox:!0,file:!0,password:!0,image:!0})d.pseudos[b]=ma(b);for(b in{submit:!0,reset:!0})d.pseudos[b]=na(b);function qa(){}qa.prototype=d.filters=d.pseudos,d.setFilters=new qa,g=ga.tokenize=function(a,b){var c,e,f,g,h,i,j,k=z[a+" "];if(k)return b?0:k.slice(0);h=a,i=[],j=d.preFilter;while(h){(!c||(e=S.exec(h)))&&(e&&(h=h.slice(e[0].length)||h),i.push(f=[])),c=!1,(e=T.exec(h))&&(c=e.shift(),f.push({value:c,type:e[0].replace(R," ")}),h=h.slice(c.length));for(g in d.filter)!(e=X[g].exec(h))||j[g]&&!(e=j[g](e))||(c=e.shift(),f.push({value:c,type:g,matches:e}),h=h.slice(c.length));if(!c)break}return b?h.length:h?ga.error(a):z(a,i).slice(0)};function ra(a){for(var b=0,c=a.length,d="";c>b;b++)d+=a[b].value;return d}function sa(a,b,c){var d=b.dir,e=c&&"parentNode"===d,f=x++;return b.first?function(b,c,f){while(b=b[d])if(1===b.nodeType||e)return a(b,c,f)}:function(b,c,g){var h,i,j=[w,f];if(g){while(b=b[d])if((1===b.nodeType||e)&&a(b,c,g))return!0}else while(b=b[d])if(1===b.nodeType||e){if(i=b[u]||(b[u]={}),(h=i[d])&&h[0]===w&&h[1]===f)return j[2]=h[2];if(i[d]=j,j[2]=a(b,c,g))return!0}}}function ta(a){return a.length>1?function(b,c,d){var e=a.length;while(e--)if(!a[e](b,c,d))return!1;return!0}:a[0]}function ua(a,b,c){for(var d=0,e=b.length;e>d;d++)ga(a,b[d],c);return c}function va(a,b,c,d,e){for(var f,g=[],h=0,i=a.length,j=null!=b;i>h;h++)(f=a[h])&&(!c||c(f,d,e))&&(g.push(f),j&&b.push(h));return g}function wa(a,b,c,d,e,f){return d&&!d[u]&&(d=wa(d)),e&&!e[u]&&(e=wa(e,f)),ia(function(f,g,h,i){var j,k,l,m=[],n=[],o=g.length,p=f||ua(b||"*",h.nodeType?[h]:h,[]),q=!a||!f&&b?p:va(p,m,a,h,i),r=c?e||(f?a:o||d)?[]:g:q;if(c&&c(q,r,h,i),d){j=va(r,n),d(j,[],h,i),k=j.length;while(k--)(l=j[k])&&(r[n[k]]=!(q[n[k]]=l))}if(f){if(e||a){if(e){j=[],k=r.length;while(k--)(l=r[k])&&j.push(q[k]=l);e(null,r=[],j,i)}k=r.length;while(k--)(l=r[k])&&(j=e?J(f,l):m[k])>-1&&(f[j]=!(g[j]=l))}}else r=va(r===g?r.splice(o,r.length):r),e?e(null,g,r,i):H.apply(g,r)})}function xa(a){for(var b,c,e,f=a.length,g=d.relative[a[0].type],h=g||d.relative[" "],i=g?1:0,k=sa(function(a){return a===b},h,!0),l=sa(function(a){return J(b,a)>-1},h,!0),m=[function(a,c,d){var e=!g&&(d||c!==j)||((b=c).nodeType?k(a,c,d):l(a,c,d));return b=null,e}];f>i;i++)if(c=d.relative[a[i].type])m=[sa(ta(m),c)];else{if(c=d.filter[a[i].type].apply(null,a[i].matches),c[u]){for(e=++i;f>e;e++)if(d.relative[a[e].type])break;return wa(i>1&&ta(m),i>1&&ra(a.slice(0,i-1).concat({value:" "===a[i-2].type?"*":""})).replace(R,"$1"),c,e>i&&xa(a.slice(i,e)),f>e&&xa(a=a.slice(e)),f>e&&ra(a))}m.push(c)}return ta(m)}function ya(a,b){var c=b.length>0,e=a.length>0,f=function(f,g,h,i,k){var l,m,o,p=0,q="0",r=f&&[],s=[],t=j,u=f||e&&d.find.TAG("*",k),v=w+=null==t?1:Math.random()||.1,x=u.length;for(k&&(j=g!==n&&g);q!==x&&null!=(l=u[q]);q++){if(e&&l){m=0;while(o=a[m++])if(o(l,g,h)){i.push(l);break}k&&(w=v)}c&&((l=!o&&l)&&p--,f&&r.push(l))}if(p+=q,c&&q!==p){m=0;while(o=b[m++])o(r,s,g,h);if(f){if(p>0)while(q--)r[q]||s[q]||(s[q]=F.call(i));s=va(s)}H.apply(i,s),k&&!f&&s.length>0&&p+b.length>1&&ga.uniqueSort(i)}return k&&(w=v,j=t),r};return c?ia(f):f}return h=ga.compile=function(a,b){var c,d=[],e=[],f=A[a+" "];if(!f){b||(b=g(a)),c=b.length;while(c--)f=xa(b[c]),f[u]?d.push(f):e.push(f);f=A(a,ya(e,d)),f.selector=a}return f},i=ga.select=function(a,b,e,f){var i,j,k,l,m,n="function"==typeof a&&a,o=!f&&g(a=n.selector||a);if(e=e||[],1===o.length){if(j=o[0]=o[0].slice(0),j.length>2&&"ID"===(k=j[0]).type&&c.getById&&9===b.nodeType&&p&&d.relative[j[1].type]){if(b=(d.find.ID(k.matches[0].replace(ca,da),b)||[])[0],!b)return e;n&&(b=b.parentNode),a=a.slice(j.shift().value.length)}i=X.needsContext.test(a)?0:j.length;while(i--){if(k=j[i],d.relative[l=k.type])break;if((m=d.find[l])&&(f=m(k.matches[0].replace(ca,da),aa.test(j[0].type)&&pa(b.parentNode)||b))){if(j.splice(i,1),a=f.length&&ra(j),!a)return H.apply(e,f),e;break}}}return(n||h(a,o))(f,b,!p,e,aa.test(a)&&pa(b.parentNode)||b),e},c.sortStable=u.split("").sort(B).join("")===u,c.detectDuplicates=!!l,m(),c.sortDetached=ja(function(a){return 1&a.compareDocumentPosition(n.createElement("div"))}),ja(function(a){return a.innerHTML="<a href='#'></a>","#"===a.firstChild.getAttribute("href")})||ka("type|href|height|width",function(a,b,c){return c?void 0:a.getAttribute(b,"type"===b.toLowerCase()?1:2)}),c.attributes&&ja(function(a){return a.innerHTML="<input/>",a.firstChild.setAttribute("value",""),""===a.firstChild.getAttribute("value")})||ka("value",function(a,b,c){return c||"input"!==a.nodeName.toLowerCase()?void 0:a.defaultValue}),ja(function(a){return null==a.getAttribute("disabled")})||ka(K,function(a,b,c){var d;return c?void 0:a[b]===!0?b.toLowerCase():(d=a.getAttributeNode(b))&&d.specified?d.value:null}),ga}(a);m.find=s,m.expr=s.selectors,m.expr[":"]=m.expr.pseudos,m.unique=s.uniqueSort,m.text=s.getText,m.isXMLDoc=s.isXML,m.contains=s.contains;var t=m.expr.match.needsContext,u=/^<(\w+)\s*\/?>(?:<\/\1>|)$/,v=/^.[^:#\[\.,]*$/;function w(a,b,c){if(m.isFunction(b))return m.grep(a,function(a,d){return!!b.call(a,d,a)!==c});if(b.nodeType)return m.grep(a,function(a){return a===b!==c});if("string"==typeof b){if(v.test(b))return m.filter(b,a,c);b=m.filter(b,a)}return m.grep(a,function(a){return m.inArray(a,b)>=0!==c})}m.filter=function(a,b,c){var d=b[0];return c&&(a=":not("+a+")"),1===b.length&&1===d.nodeType?m.find.matchesSelector(d,a)?[d]:[]:m.find.matches(a,m.grep(b,function(a){return 1===a.nodeType}))},m.fn.extend({find:function(a){var b,c=[],d=this,e=d.length;if("string"!=typeof a)return this.pushStack(m(a).filter(function(){for(b=0;e>b;b++)if(m.contains(d[b],this))return!0}));for(b=0;e>b;b++)m.find(a,d[b],c);return c=this.pushStack(e>1?m.unique(c):c),c.selector=this.selector?this.selector+" "+a:a,c},filter:function(a){return this.pushStack(w(this,a||[],!1))},not:function(a){return this.pushStack(w(this,a||[],!0))},is:function(a){return!!w(this,"string"==typeof a&&t.test(a)?m(a):a||[],!1).length}});var x,y=a.document,z=/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,A=m.fn.init=function(a,b){var c,d;if(!a)return this;if("string"==typeof a){if(c="<"===a.charAt(0)&&">"===a.charAt(a.length-1)&&a.length>=3?[null,a,null]:z.exec(a),!c||!c[1]&&b)return!b||b.jquery?(b||x).find(a):this.constructor(b).find(a);if(c[1]){if(b=b instanceof m?b[0]:b,m.merge(this,m.parseHTML(c[1],b&&b.nodeType?b.ownerDocument||b:y,!0)),u.test(c[1])&&m.isPlainObject(b))for(c in b)m.isFunction(this[c])?this[c](b[c]):this.attr(c,b[c]);return this}if(d=y.getElementById(c[2]),d&&d.parentNode){if(d.id!==c[2])return x.find(a);this.length=1,this[0]=d}return this.context=y,this.selector=a,this}return a.nodeType?(this.context=this[0]=a,this.length=1,this):m.isFunction(a)?"undefined"!=typeof x.ready?x.ready(a):a(m):(void 0!==a.selector&&(this.selector=a.selector,this.context=a.context),m.makeArray(a,this))};A.prototype=m.fn,x=m(y);var B=/^(?:parents|prev(?:Until|All))/,C={children:!0,contents:!0,next:!0,prev:!0};m.extend({dir:function(a,b,c){var d=[],e=a[b];while(e&&9!==e.nodeType&&(void 0===c||1!==e.nodeType||!m(e).is(c)))1===e.nodeType&&d.push(e),e=e[b];return d},sibling:function(a,b){for(var c=[];a;a=a.nextSibling)1===a.nodeType&&a!==b&&c.push(a);return c}}),m.fn.extend({has:function(a){var b,c=m(a,this),d=c.length;return this.filter(function(){for(b=0;d>b;b++)if(m.contains(this,c[b]))return!0})},closest:function(a,b){for(var c,d=0,e=this.length,f=[],g=t.test(a)||"string"!=typeof a?m(a,b||this.context):0;e>d;d++)for(c=this[d];c&&c!==b;c=c.parentNode)if(c.nodeType<11&&(g?g.index(c)>-1:1===c.nodeType&&m.find.matchesSelector(c,a))){f.push(c);break}return this.pushStack(f.length>1?m.unique(f):f)},index:function(a){return a?"string"==typeof a?m.inArray(this[0],m(a)):m.inArray(a.jquery?a[0]:a,this):this[0]&&this[0].parentNode?this.first().prevAll().length:-1},add:function(a,b){return this.pushStack(m.unique(m.merge(this.get(),m(a,b))))},addBack:function(a){return this.add(null==a?this.prevObject:this.prevObject.filter(a))}});function D(a,b){do a=a[b];while(a&&1!==a.nodeType);return a}m.each({parent:function(a){var b=a.parentNode;return b&&11!==b.nodeType?b:null},parents:function(a){return m.dir(a,"parentNode")},parentsUntil:function(a,b,c){return m.dir(a,"parentNode",c)},next:function(a){return D(a,"nextSibling")},prev:function(a){return D(a,"previousSibling")},nextAll:function(a){return m.dir(a,"nextSibling")},prevAll:function(a){return m.dir(a,"previousSibling")},nextUntil:function(a,b,c){return m.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return m.dir(a,"previousSibling",c)},siblings:function(a){return m.sibling((a.parentNode||{}).firstChild,a)},children:function(a){return m.sibling(a.firstChild)},contents:function(a){return m.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:m.merge([],a.childNodes)}},function(a,b){m.fn[a]=function(c,d){var e=m.map(this,b,c);return"Until"!==a.slice(-5)&&(d=c),d&&"string"==typeof d&&(e=m.filter(d,e)),this.length>1&&(C[a]||(e=m.unique(e)),B.test(a)&&(e=e.reverse())),this.pushStack(e)}});var E=/\S+/g,F={};function G(a){var b=F[a]={};return m.each(a.match(E)||[],function(a,c){b[c]=!0}),b}m.Callbacks=function(a){a="string"==typeof a?F[a]||G(a):m.extend({},a);var b,c,d,e,f,g,h=[],i=!a.once&&[],j=function(l){for(c=a.memory&&l,d=!0,f=g||0,g=0,e=h.length,b=!0;h&&e>f;f++)if(h[f].apply(l[0],l[1])===!1&&a.stopOnFalse){c=!1;break}b=!1,h&&(i?i.length&&j(i.shift()):c?h=[]:k.disable())},k={add:function(){if(h){var d=h.length;!function f(b){m.each(b,function(b,c){var d=m.type(c);"function"===d?a.unique&&k.has(c)||h.push(c):c&&c.length&&"string"!==d&&f(c)})}(arguments),b?e=h.length:c&&(g=d,j(c))}return this},remove:function(){return h&&m.each(arguments,function(a,c){var d;while((d=m.inArray(c,h,d))>-1)h.splice(d,1),b&&(e>=d&&e--,f>=d&&f--)}),this},has:function(a){return a?m.inArray(a,h)>-1:!(!h||!h.length)},empty:function(){return h=[],e=0,this},disable:function(){return h=i=c=void 0,this},disabled:function(){return!h},lock:function(){return i=void 0,c||k.disable(),this},locked:function(){return!i},fireWith:function(a,c){return!h||d&&!i||(c=c||[],c=[a,c.slice?c.slice():c],b?i.push(c):j(c)),this},fire:function(){return k.fireWith(this,arguments),this},fired:function(){return!!d}};return k},m.extend({Deferred:function(a){var b=[["resolve","done",m.Callbacks("once memory"),"resolved"],["reject","fail",m.Callbacks("once memory"),"rejected"],["notify","progress",m.Callbacks("memory")]],c="pending",d={state:function(){return c},always:function(){return e.done(arguments).fail(arguments),this},then:function(){var a=arguments;return m.Deferred(function(c){m.each(b,function(b,f){var g=m.isFunction(a[b])&&a[b];e[f[1]](function(){var a=g&&g.apply(this,arguments);a&&m.isFunction(a.promise)?a.promise().done(c.resolve).fail(c.reject).progress(c.notify):c[f[0]+"With"](this===d?c.promise():this,g?[a]:arguments)})}),a=null}).promise()},promise:function(a){return null!=a?m.extend(a,d):d}},e={};return d.pipe=d.then,m.each(b,function(a,f){var g=f[2],h=f[3];d[f[1]]=g.add,h&&g.add(function(){c=h},b[1^a][2].disable,b[2][2].lock),e[f[0]]=function(){return e[f[0]+"With"](this===e?d:this,arguments),this},e[f[0]+"With"]=g.fireWith}),d.promise(e),a&&a.call(e,e),e},when:function(a){var b=0,c=d.call(arguments),e=c.length,f=1!==e||a&&m.isFunction(a.promise)?e:0,g=1===f?a:m.Deferred(),h=function(a,b,c){return function(e){b[a]=this,c[a]=arguments.length>1?d.call(arguments):e,c===i?g.notifyWith(b,c):--f||g.resolveWith(b,c)}},i,j,k;if(e>1)for(i=new Array(e),j=new Array(e),k=new Array(e);e>b;b++)c[b]&&m.isFunction(c[b].promise)?c[b].promise().done(h(b,k,c)).fail(g.reject).progress(h(b,j,i)):--f;return f||g.resolveWith(k,c),g.promise()}});var H;m.fn.ready=function(a){return m.ready.promise().done(a),this},m.extend({isReady:!1,readyWait:1,holdReady:function(a){a?m.readyWait++:m.ready(!0)},ready:function(a){if(a===!0?!--m.readyWait:!m.isReady){if(!y.body)return setTimeout(m.ready);m.isReady=!0,a!==!0&&--m.readyWait>0||(H.resolveWith(y,[m]),m.fn.triggerHandler&&(m(y).triggerHandler("ready"),m(y).off("ready")))}}});function I(){y.addEventListener?(y.removeEventListener("DOMContentLoaded",J,!1),a.removeEventListener("load",J,!1)):(y.detachEvent("onreadystatechange",J),a.detachEvent("onload",J))}function J(){(y.addEventListener||"load"===event.type||"complete"===y.readyState)&&(I(),m.ready())}m.ready.promise=function(b){if(!H)if(H=m.Deferred(),"complete"===y.readyState)setTimeout(m.ready);else if(y.addEventListener)y.addEventListener("DOMContentLoaded",J,!1),a.addEventListener("load",J,!1);else{y.attachEvent("onreadystatechange",J),a.attachEvent("onload",J);var c=!1;try{c=null==a.frameElement&&y.documentElement}catch(d){}c&&c.doScroll&&!function e(){if(!m.isReady){try{c.doScroll("left")}catch(a){return setTimeout(e,50)}I(),m.ready()}}()}return H.promise(b)};var K="undefined",L;for(L in m(k))break;k.ownLast="0"!==L,k.inlineBlockNeedsLayout=!1,m(function(){var a,b,c,d;c=y.getElementsByTagName("body")[0],c&&c.style&&(b=y.createElement("div"),d=y.createElement("div"),d.style.cssText="position:absolute;border:0;width:0;height:0;top:0;left:-9999px",c.appendChild(d).appendChild(b),typeof b.style.zoom!==K&&(b.style.cssText="display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1",k.inlineBlockNeedsLayout=a=3===b.offsetWidth,a&&(c.style.zoom=1)),c.removeChild(d))}),function(){var a=y.createElement("div");if(null==k.deleteExpando){k.deleteExpando=!0;try{delete a.test}catch(b){k.deleteExpando=!1}}a=null}(),m.acceptData=function(a){var b=m.noData[(a.nodeName+" ").toLowerCase()],c=+a.nodeType||1;return 1!==c&&9!==c?!1:!b||b!==!0&&a.getAttribute("classid")===b};var M=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,N=/([A-Z])/g;function O(a,b,c){if(void 0===c&&1===a.nodeType){var d="data-"+b.replace(N,"-$1").toLowerCase();if(c=a.getAttribute(d),"string"==typeof c){try{c="true"===c?!0:"false"===c?!1:"null"===c?null:+c+""===c?+c:M.test(c)?m.parseJSON(c):c}catch(e){}m.data(a,b,c)}else c=void 0}return c}function P(a){var b;for(b in a)if(("data"!==b||!m.isEmptyObject(a[b]))&&"toJSON"!==b)return!1;
@@ -362,182 +362,458 @@ summary {
 
 
 
-<h1 class="title toc-ignore">Day 2 - File 03 - Statistical Tests</h1>
+<h1 class="title toc-ignore">Day 2 - File 01 - Data Cleaning</h1>
 <h4 class="author">Melinda Higgins</h4>
 <h4 class="date">7/29/2020</h4>
 
 </div>
 
 
-<div id="run-a-t-test" class="section level2">
-<h2>Run a t-test</h2>
-<p>The function to perform a t-test is <code>t.test()</code>.</p>
-<p>Let’s look at running a t-test to compare the number of rings between males and females ignoring the infants.</p>
-<p>Let’s first create a subset of the data for just the adults.</p>
-<pre class="r"><code># select cases where sex does not equal to &quot;I&quot; for infants
-abaloneAdults &lt;- abaloneMod %&gt;%
-  filter(sex != &quot;I&quot;)</code></pre>
-<p>Run t-test using the formula syntax of <code>rings ~ sex</code>.</p>
-<p>NOTE: <code>var.equal=FALSE</code> is the default for the <code>t.test()</code> function - so by default R runs the unpooled t-test. You can change this setting to TRUE if you wish.</p>
-<pre class="r"><code>t.test(rings ~ sex, 
-       var.equal = TRUE,
-       data=abaloneAdults)</code></pre>
-<pre><code>## 
-##  Two Sample t-test
-## 
-## data:  rings by sex
-## t = 3.6729, df = 2833, p-value = 0.0002442
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  0.1975565 0.6500562
-## sample estimates:
-## mean in group F mean in group M 
-##         11.1293         10.7055</code></pre>
-<p>This gives us the basic output for the pooled t-test, but there is a lot more we can get. So, let’s save this output as an object and see what is there and how to pull it out.</p>
-<pre class="r"><code>ttp &lt;- t.test(rings ~ sex, 
-              var.equal = TRUE,
-              data=abaloneAdults)
-ttp</code></pre>
-<pre><code>## 
-##  Two Sample t-test
-## 
-## data:  rings by sex
-## t = 3.6729, df = 2833, p-value = 0.0002442
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  0.1975565 0.6500562
-## sample estimates:
-## mean in group F mean in group M 
-##         11.1293         10.7055</code></pre>
-<p>This <code>ttp</code> object is a list of 10 other objects. Let’s see what is there and how to pull out the values we might want.</p>
-<pre class="r"><code>ttp$statistic    # t-test statistic</code></pre>
-<pre><code>##        t 
-## 3.672932</code></pre>
-<pre class="r"><code>ttp$parameter    # degrees of freedom for t-test</code></pre>
-<pre><code>##   df 
-## 2833</code></pre>
-<pre class="r"><code>ttp$p.value      # p-value for the t-test</code></pre>
-<pre><code>## [1] 0.0002442194</code></pre>
-<pre class="r"><code>ttp$conf.int     # 95% confidence interval for the mean diff</code></pre>
-<pre><code>## [1] 0.1975565 0.6500562
-## attr(,&quot;conf.level&quot;)
-## [1] 0.95</code></pre>
-<pre class="r"><code>ttp$estimate     # the 2 group means for F and M</code></pre>
-<pre><code>## mean in group F mean in group M 
-##         11.1293         10.7055</code></pre>
-<pre class="r"><code>ttp$estimate[1]  # the mean of the F females</code></pre>
-<pre><code>## mean in group F 
-##         11.1293</code></pre>
-<pre class="r"><code>ttp$estimate[2]  # the mean of the M males</code></pre>
-<pre><code>## mean in group M 
-##         10.7055</code></pre>
-<p>We could use these to help customize our output further if we wish to do so. For example, we could write the following sentence.</p>
-<p>The pooled t-test for the difference between the average number of rings for females 11.1293037 and number of rings for males 10.7054974 was significant with a p-value of 2.44219410^{-4}.</p>
-<p>We could clean this sentence up a little bit by adding the <code>round()</code> function or the <code>format()</code> function to limit the number of decimal places shown. Let’s set the number of decimal places to 4 when we round the numbers and set significant digits to 2 for the p-value.</p>
-<p>The pooled t-test for the difference between the average number of rings for females 11.1293 and number of rings for males 10.7055 was significant with a p-value of 0.00024.</p>
+<div id="data-errorsissues-in-abalone-dataset" class="section level2">
+<h2>Data errors/issues in Abalone dataset</h2>
+<p>As we saw yesterday in our Day 1 exercises, there are a few typos and errors in the Abalone dataset. Here are the key issues in this dataset:</p>
+<ol style="list-style-type: decimal">
+<li><p>There are heights = 0 which should not be possible. Perhaps this is a numerical precision issue in how the data were recorded, but without further information, 0’s should not be possible. Let’s set these values to <code>NA</code> (not applicable) or “missing” or “unknown”.</p></li>
+<li><p>As we saw yesterday there was at least 1 abalone whose <code>shuckedWeight</code> was larger than its <code>wholeWeight</code> which isn’t possible. Again let’s set this abalone’s shucked weight and whole weight to unknown or to <code>NA</code>.</p></li>
+<li><p>We also saw there were a few abalones whose length was not their longest measurement. So, again let’s set these values to missing <code>NA</code>.</p></li>
+</ol>
+<p>To make modification to the dataset, we will use the <code>mutate()</code> function from the <strong>dplyr</strong> package.</p>
+<p>We will also create a new dataset called abaloneMod which has our modifications applied to this dataset. This is better than writing over the original data.</p>
+<p>Look at case(s) where height == 0. Use the <code>filter()</code> function from <strong>dplyr</strong>.</p>
+<p>NOTE: You do need to use a double equals for the logical operator of “is equal to” <code>==</code>.</p>
+<pre class="r"><code>abalone %&gt;%
+  filter(height == 0)</code></pre>
+<pre><code>## # A tibble: 2 x 11
+##      X1 sex   length diameter height wholeWeight shuckedWeight visceraWeight
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+## 1  1258 I      0.43      0.34      0       0.428        0.206         0.086 
+## 2  3997 I      0.315     0.23      0       0.134        0.0575        0.0285
+## # … with 3 more variables: shellWeight &lt;dbl&gt;, rings &lt;dbl&gt;, sex_factor &lt;fct&gt;</code></pre>
+<p>We can print these “case IDs” to the screen to help us go back and check these data.</p>
+<pre class="r"><code>abalone %&gt;%
+  filter(height == 0) %&gt;%
+  select(X1)</code></pre>
+<pre><code>## # A tibble: 2 x 1
+##      X1
+##   &lt;dbl&gt;
+## 1  1258
+## 2  3997</code></pre>
+<p>Using this information, create a new modified dataset <code>abaloneMod</code> that sets height equal to 0 to missing.</p>
+<pre class="r"><code># create abaloneMod
+# set height == 0 to NA
+abaloneMod &lt;- abalone %&gt;%
+  mutate(height = ifelse(height==0, NA, height))</code></pre>
+<p>Let’s check the stats for <code>height</code> with the summary function before and after the missing data was added for implausible values.</p>
+<pre class="r"><code># before creating the NAs
+abalone %&gt;%
+  pull(height) %&gt;%
+  summary()</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0000  0.1150  0.1400  0.1395  0.1650  1.1300</code></pre>
+<pre class="r"><code># after creating the NAs for height=0
+abaloneMod %&gt;%
+  pull(height) %&gt;%
+  summary()</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##  0.0100  0.1150  0.1400  0.1396  0.1650  1.1300       2</code></pre>
+<p>Notice that the output for <code>summary()</code> now shows 2 NA’s - indicating we have 2 missing values for the variable <code>height</code> in the abalone dataset.</p>
+</div>
+<div id="missing-data-issues" class="section level2">
+<h2>Missing Data issues</h2>
+<p>Many R functions will throw errors if/when you have missing data. Most have options you can set to help adjust for the missing data so the function will execute and run correctly.</p>
+<p>For example, let’s see how the <code>mean()</code> function runs with missing data.</p>
+<pre class="r"><code># after creating the NAs for height=0
+abaloneMod %&gt;%
+  pull(height) %&gt;%
+  mean()</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>This code runs, but the result is <code>NA</code>. Since there are missing values <code>NA</code>s for the <code>height</code> variable, the result is <code>NA</code>.</p>
+<p>Let’s add some options on how to handle the missing data. For the <code>mean()</code> function, we can add the <code>na.rm=TRUE</code> option to tell the <code>mean()</code> function to first remove the missing <code>NA</code>s and then run then calculate the mean.</p>
+<pre class="r"><code># add na.rm=TRUE option
+abaloneMod %&gt;%
+  pull(height) %&gt;%
+  mean(na.rm=TRUE)</code></pre>
+<pre><code>## [1] 0.1395832</code></pre>
+<p>Also try with <code>summarise()</code> function from <strong>dplyr</strong> to add additional information.</p>
+<p>For this exmaple below we’ve added 3 summary statistics.</p>
+<ul>
+<li><code>n = n()</code> which is from the <strong>dplyr</strong> package to give the total count of rows of data, even with missing data</li>
+<li>we added <code>nmiss = sum(is.na(height))</code> which 1st runs the <code>is.na()</code> function which returns 0 for not missing and 1 for missing and then the <code>sum()</code> function counts up the number of missing values for the variable <code>height</code></li>
+<li>and finally we add the <code>mean()</code> of <code>height</code> excluding the missing values.</li>
+</ul>
+<p>So, the mean height reported here is out of 4175 abalone heights with 2 abalones missing height measurements.</p>
+<pre class="r"><code># add na.rm=TRUE option
+abaloneMod %&gt;%
+  select(height) %&gt;%
+  summarise(n_ht = n(),
+            nmiss_ht = sum(is.na(height)),
+            mean_ht = mean(height, na.rm=TRUE))</code></pre>
+<pre><code>## # A tibble: 1 x 3
+##    n_ht nmiss_ht mean_ht
+##   &lt;int&gt;    &lt;int&gt;   &lt;dbl&gt;
+## 1  4177        2   0.140</code></pre>
+</div>
+<div id="more-modification-of-the-abalone-dataset" class="section level2">
+<h2>More modification of the Abalone dataset</h2>
+<p>Let’s add missing values for the other issues with this dataset. Set the weights to <code>NA</code> where shucked weight is &gt; whole weight.</p>
+<pre class="r"><code># create abaloneMod
+# If shuckedWeight is &gt; wholeWeight set both values = NA
+abaloneMod &lt;- abaloneMod %&gt;%
+  mutate(shuckedWeight = 
+           ifelse(shuckedWeight &gt; wholeWeight, NA,
+                  shuckedWeight),
+         wholeWeight = 
+           ifelse(shuckedWeight &gt; wholeWeight, NA,
+                  wholeWeight))</code></pre>
 </div>
 <div id="your-turn" class="section level2">
 <h2>Your turn</h2>
-<p>Run a t-test for the abalone heights between males and females in the <code>abaloneAdults</code> dataset and display your results how ever you would like to.</p>
-<pre class="r"><code># insert your code here</code></pre>
+<p>Get the means of <code>shuckedWeight</code> and <code>wholeWeight</code> from <code>abaloneMod</code> now that we’ve set these values to missing where the shucked weight was &gt; the whole weight for that abalone.</p>
+<p>HINT: Start with the example above:</p>
+<pre><code>abaloneMod %&gt;%
+  select(height) %&gt;%
+  summarise(n_ht = n(),
+            nmiss_ht = sum(is.na(height)),
+            mean_ht = mean(height, na.rm=TRUE))</code></pre>
+<pre class="r"><code># put the answer here
+
+abaloneMod %&gt;%
+  select(shuckedWeight, wholeWeight) %&gt;%
+  summarise(n_sw = n(),
+            nmiss_sw = sum(is.na(shuckedWeight)),
+            mean_sw = mean(shuckedWeight, na.rm=TRUE),
+            n_ww = n(),
+            nmiss_ww = sum(is.na(wholeWeight)),
+            mean_ww = mean(wholeWeight, na.rm=TRUE))</code></pre>
+<pre><code>## # A tibble: 1 x 6
+##    n_sw nmiss_sw mean_sw  n_ww nmiss_ww mean_ww
+##   &lt;int&gt;    &lt;int&gt;   &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;   &lt;dbl&gt;
+## 1  4177        4   0.359  4177        4   0.829</code></pre>
 </div>
-<div id="lets-create-a-median-split-for-rings" class="section level2">
-<h2>Let’s create a median split for rings</h2>
-<p>Save the median number of rings.</p>
-<pre class="r"><code>medrings &lt;- abaloneAdults %&gt;%
-  pull(rings) %&gt;%
-  median()</code></pre>
-<p>Create a new variable for low rings and high rings. This will create a TRUE/FALSE logical variable called <code>highrings</code> for abalones with rings &gt; 10 (the median number of rings).</p>
-<pre class="r"><code>abaloneAdults &lt;- abaloneAdults %&gt;%
-  mutate(highrings = rings &gt; medrings)</code></pre>
-<p>Look at a table summary for <code>highrings</code>.</p>
-<pre class="r"><code>abaloneAdults %&gt;%
-  pull(highrings) %&gt;%
-  table()</code></pre>
-<pre><code>## .
-## FALSE  TRUE 
-##  1543  1292</code></pre>
-<p>We can also look at this with <code>sex</code>.</p>
-<pre class="r"><code>abaloneAdults %&gt;%
-  select(sex, highrings) %&gt;%
-  table()</code></pre>
-<pre><code>##    highrings
-## sex FALSE TRUE
-##   F   672  635
-##   M   871  657</code></pre>
-<p>We can make a better “Cross Table” using the gmodels package.</p>
-<p>And we can add some options and also get a chi-square test result.</p>
-<pre class="r"><code>library(gmodels)
-gmodels::CrossTable(abaloneAdults$sex, 
-                    abaloneAdults$highrings,
-                    prop.r=FALSE,     # no row %
-                    prop.c=TRUE,      # yes col %
-                    prop.t=FALSE,     # no total %
-                    prop.chisq=FALSE, # no chisq proportion
-                    chisq=TRUE)       # yes run chisq test</code></pre>
-<pre><code>## 
-##  
-##    Cell Contents
-## |-------------------------|
-## |                       N |
-## |           N / Col Total |
-## |-------------------------|
-## 
-##  
-## Total Observations in Table:  2835 
-## 
-##  
-##                   | abaloneAdults$highrings 
-## abaloneAdults$sex |     FALSE |      TRUE | Row Total | 
-## ------------------|-----------|-----------|-----------|
-##                 F |       672 |       635 |      1307 | 
-##                   |     0.436 |     0.491 |           | 
-## ------------------|-----------|-----------|-----------|
-##                 M |       871 |       657 |      1528 | 
-##                   |     0.564 |     0.509 |           | 
-## ------------------|-----------|-----------|-----------|
-##      Column Total |      1543 |      1292 |      2835 | 
-##                   |     0.544 |     0.456 |           | 
-## ------------------|-----------|-----------|-----------|
-## 
-##  
-## Statistics for All Table Factors
-## 
-## 
-## Pearson&#39;s Chi-squared test 
-## ------------------------------------------------------------
-## Chi^2 =  8.86556     d.f. =  1     p =  0.002906011 
-## 
-## Pearson&#39;s Chi-squared test with Yates&#39; continuity correction 
-## ------------------------------------------------------------
-## Chi^2 =  8.641739     d.f. =  1     p =  0.003285477 
-## 
-## </code></pre>
-<p>We can also run a simple <code>chisq.test()</code> of this data and save the results like we did for the t-test.</p>
-<pre class="r"><code>cs &lt;- chisq.test(abaloneAdults$sex,
-                 abaloneAdults$highrings)</code></pre>
-<p>Look at some of the values in this saved object <code>cs</code>.</p>
-<pre class="r"><code>cs$statistic</code></pre>
-<pre><code>## X-squared 
-##  8.641739</code></pre>
-<pre class="r"><code>cs$parameter</code></pre>
-<pre><code>## df 
-##  1</code></pre>
-<pre class="r"><code>cs$p.value</code></pre>
-<pre><code>## [1] 0.003285477</code></pre>
-<p>Again we could write a sentence - There is a significant association between abalone sex and having the number of rings be greater than 10, p-value = 0.0032855.</p>
+<div id="one-more-issue-to-clean-up-in-the-dataset" class="section level2">
+<h2>One more issue to clean up in the dataset</h2>
+<p>Let’s see if/where length was perhaps shorter &lt; than height or diameter. We can quickly view these rows (cases) using the <code>filter()</code> function from the <strong>dplyr</strong> package.</p>
+<pre class="r"><code># rows where length is shorter than height
+abaloneMod %&gt;%
+  filter(length &lt; height)</code></pre>
+<pre><code>## # A tibble: 1 x 11
+##      X1 sex   length diameter height wholeWeight shuckedWeight visceraWeight
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+## 1  2052 F      0.455    0.355   1.13       0.594         0.332         0.116
+## # … with 3 more variables: shellWeight &lt;dbl&gt;, rings &lt;dbl&gt;, sex_factor &lt;fct&gt;</code></pre>
+<pre class="r"><code># rows where length is shorter than diameter
+abaloneMod %&gt;%
+  filter(length &lt; diameter)</code></pre>
+<pre><code>## # A tibble: 1 x 11
+##      X1 sex   length diameter height wholeWeight shuckedWeight visceraWeight
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+## 1  1211 I      0.185    0.375   0.12       0.464         0.196         0.104
+## # … with 3 more variables: shellWeight &lt;dbl&gt;, rings &lt;dbl&gt;, sex_factor &lt;fct&gt;</code></pre>
+<pre class="r"><code># rows where EITHER length was shorter than height or diameter
+# the | operator is used for &quot;or&quot;
+abaloneMod %&gt;%
+  filter((length &lt; height) | (length &lt; diameter))</code></pre>
+<pre><code>## # A tibble: 2 x 11
+##      X1 sex   length diameter height wholeWeight shuckedWeight visceraWeight
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+## 1  1211 I      0.185    0.375   0.12       0.464         0.196         0.104
+## 2  2052 F      0.455    0.355   1.13       0.594         0.332         0.116
+## # … with 3 more variables: shellWeight &lt;dbl&gt;, rings &lt;dbl&gt;, sex_factor &lt;fct&gt;</code></pre>
+<pre class="r"><code># learn more - type in help(&quot;|&quot;) to see the list of other logical operators such as ! &amp; and more</code></pre>
+<p>Using this knowledge, let’s set these dimension values to missing where either length is &lt; height OR &lt; diameter.</p>
+<pre class="r"><code># If (length &lt; height) | (length &lt; diameter) set all values = NA
+abaloneMod &lt;- abaloneMod %&gt;%
+  mutate(length = 
+           ifelse((length &lt; height) | (length &lt; diameter), 
+                  NA,
+                  length),
+         height = 
+           ifelse((length &lt; height) | (length &lt; diameter), 
+                  NA,
+                  height),
+         diameter = 
+           ifelse((length &lt; height) | (length &lt; diameter), 
+                  NA,
+                  diameter))</code></pre>
+<p>And get means and n and number missing for these 3 variables adjusting for the new missing <code>NA</code> values.</p>
+<pre class="r"><code>abaloneMod %&gt;%
+  select(length, height, diameter) %&gt;%
+  summarise(n_lt = n(),
+            nmiss_lt = sum(is.na(length)),
+            mean_lt = mean(length, na.rm=TRUE),
+            nmiss_ht = sum(is.na(height)),
+            mean_ht = mean(height, na.rm=TRUE),
+            nmiss_dm = sum(is.na(diameter)),
+            mean_dm = mean(diameter, na.rm=TRUE))</code></pre>
+<pre><code>## # A tibble: 1 x 7
+##    n_lt nmiss_lt mean_lt nmiss_ht mean_ht nmiss_dm mean_dm
+##   &lt;int&gt;    &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;   &lt;dbl&gt;
+## 1  4177        4   0.524        4   0.139        4   0.408</code></pre>
+<p>Now that we have missing data, let’s see what a summary table of these 3 dimension variables looks like using the <strong>arsenal</strong> package to make a summary table.</p>
+<p>Notice that the number of missing values is now displayed.</p>
+<p><strong>Remember</strong> Use the <code>abaloneMod</code> updated dataset.</p>
+<pre class="r"><code>library(arsenal)
+tab_dimension &lt;- 
+  tableby(~length + height + diameter,
+          data=abaloneMod)
+summary(tab_dimension)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">Overall (N=4177)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>length</strong></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">   N-Miss</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="left">   Mean (SD)</td>
+<td align="center">0.524 (0.120)</td>
+</tr>
+<tr class="even">
+<td align="left">   Range</td>
+<td align="center">0.075 - 0.815</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>height</strong></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">   N-Miss</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="left">   Mean (SD)</td>
+<td align="center">0.139 (0.039)</td>
+</tr>
+<tr class="even">
+<td align="left">   Range</td>
+<td align="center">0.010 - 0.515</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>diameter</strong></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">   N-Miss</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="left">   Mean (SD)</td>
+<td align="center">0.408 (0.099)</td>
+</tr>
+<tr class="even">
+<td align="left">   Range</td>
+<td align="center">0.055 - 0.650</td>
+</tr>
+</tbody>
+</table>
+<p>Make this table again and show the summary statistics by <code>sex</code>. Now you can see the more of the values were set to missing for the “I” infants.</p>
+<pre class="r"><code>tab_dimension &lt;- 
+  tableby(sex ~ length + height + diameter,
+          data=abaloneMod)
+summary(tab_dimension)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">F (N=1307)</th>
+<th align="center">I (N=1342)</th>
+<th align="center">M (N=1528)</th>
+<th align="center">Total (N=4177)</th>
+<th align="right">p value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>length</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td align="left">   N-Miss</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">   Mean (SD)</td>
+<td align="center">0.579 (0.086)</td>
+<td align="center">0.428 (0.109)</td>
+<td align="center">0.561 (0.103)</td>
+<td align="center">0.524 (0.120)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">   Range</td>
+<td align="center">0.275 - 0.815</td>
+<td align="center">0.075 - 0.725</td>
+<td align="center">0.155 - 0.780</td>
+<td align="center">0.075 - 0.815</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>height</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td align="left">   N-Miss</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">   Mean (SD)</td>
+<td align="center">0.157 (0.030)</td>
+<td align="center">0.108 (0.032)</td>
+<td align="center">0.151 (0.035)</td>
+<td align="center">0.139 (0.039)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">   Range</td>
+<td align="center">0.015 - 0.250</td>
+<td align="center">0.010 - 0.220</td>
+<td align="center">0.025 - 0.515</td>
+<td align="center">0.010 - 0.515</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>diameter</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td align="left">   N-Miss</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">   Mean (SD)</td>
+<td align="center">0.455 (0.071)</td>
+<td align="center">0.327 (0.088)</td>
+<td align="center">0.439 (0.084)</td>
+<td align="center">0.408 (0.099)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">   Range</td>
+<td align="center">0.195 - 0.650</td>
+<td align="center">0.055 - 0.550</td>
+<td align="center">0.110 - 0.630</td>
+<td align="center">0.055 - 0.650</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="your-turn-1" class="section level2">
-<h2>Your turn</h2>
-<p>Run a chi-square test to compare abalone sex for abalones whose shell weights are &lt; their viscera weights. I’ll create the new variable for you.</p>
-<pre class="r"><code>abaloneAdults &lt;- abaloneAdults %&gt;%
-  mutate(shell_ltv = shellWeight &lt; visceraWeight)</code></pre>
-<p>Run the chi-square test between <code>abaloneAdults$sex</code> and <code>abaloneAdults$shell_ltv</code>.</p>
-<pre class="r"><code># insert your code here</code></pre>
+<div id="one-more-modification---calculate-age" class="section level2">
+<h2>One more modification - calculate age</h2>
+<p>Remember in the data notes that abalone age is equal to the number of rings + 1.5. So, let’s go ahead and add <code>age</code> as a variable to our dataset computed from the number of rings + 1.5. Add this variable to our modified dataset, <code>abaloneMod</code>.</p>
+<p>We’ll again use the <code>mutate()</code> function from <strong>dplyr</strong>.</p>
+<pre class="r"><code>abaloneMod &lt;- abaloneMod %&gt;%
+  mutate(age = rings + 1.5)</code></pre>
+<p>Get the summary stats for <code>rings</code> and <code>age</code> by <code>sex</code> - again use the arsenal package.</p>
+<pre class="r"><code>tab_agerings &lt;- 
+  tableby(sex ~ age + rings,
+          data=abaloneMod)
+summary(tab_agerings)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">F (N=1307)</th>
+<th align="center">I (N=1342)</th>
+<th align="center">M (N=1528)</th>
+<th align="center">Total (N=4177)</th>
+<th align="right">p value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>age</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td align="left">   Mean (SD)</td>
+<td align="center">12.629 (3.104)</td>
+<td align="center">9.390 (2.512)</td>
+<td align="center">12.205 (3.026)</td>
+<td align="center">11.434 (3.224)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">   Range</td>
+<td align="center">6.500 - 30.500</td>
+<td align="center">2.500 - 22.500</td>
+<td align="center">4.500 - 28.500</td>
+<td align="center">2.500 - 30.500</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>rings</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="right">&lt; 0.001</td>
+</tr>
+<tr class="odd">
+<td align="left">   Mean (SD)</td>
+<td align="center">11.129 (3.104)</td>
+<td align="center">7.890 (2.512)</td>
+<td align="center">10.705 (3.026)</td>
+<td align="center">9.934 (3.224)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">   Range</td>
+<td align="center">5.000 - 29.000</td>
+<td align="center">1.000 - 21.000</td>
+<td align="center">3.000 - 27.000</td>
+<td align="center">1.000 - 29.000</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="save-the-modifications-for-abaloneadults" class="section level2">
-<h2>Save the modifications for <code>abaloneAdults</code></h2>
-<pre class="r"><code>save(abaloneAdults, file=&quot;abaloneAdults.RData&quot;)</code></pre>
+<div id="save-the-update-data-file" class="section level2">
+<h2>Save the update data file</h2>
+<p>To save the <code>abaloneMod</code> dataset for use in another R markdown file or other R scripts or projects, we can save it a couple of ways.</p>
+<p>Save it as an R data file “abaloneMod.RData”.</p>
+<pre class="r"><code>save(abaloneMod,
+     file = &quot;abaloneMod.RData&quot;)</code></pre>
+<p>Save it as a CSV output using the <code>write_csv()</code> function from <strong>readr</strong> package.</p>
+<pre class="r"><code>library(readr)
+readr::write_csv(abaloneMod, &quot;abaloneMod.csv&quot;)</code></pre>
 </div>
 
 

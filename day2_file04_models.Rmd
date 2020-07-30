@@ -3,9 +3,9 @@ title: "Day 2 - File 04 - Fit and Compare Models"
 author: "Melinda Higgins"
 date: "7/29/2020"
 output:
-  pdf_document: default
-  word_document: default
   html_document: default
+  word_document: default
+  pdf_document: default
 editor_options:
   chunk_output_type: console
 ---
